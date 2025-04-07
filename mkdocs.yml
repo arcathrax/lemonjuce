@@ -1,0 +1,8 @@
+site_name: JUCEDocs
+
+nav:
+  - Tutorials:
+      - simple gain plugin: tutorials/simple_gain_plugin.md
+  - Modules:
+    - dsp:
+      - gain: modules/dsp/gain.md
