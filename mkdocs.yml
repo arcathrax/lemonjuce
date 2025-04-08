@@ -2,7 +2,9 @@ site_name: JUCEDocs
 
 nav:
   - Tutorials:
-      - simple gain plugin: tutorials/simple_gain_plugin.md
+    - Whats JUCE and how to use it: tutorials/whats_juce_and_how_to_use_it.md
+    - Getting started with the JUCE framework: tutorials/getting_started_with_the_JUCE_framework.md
+    - Simple Gain Plugin: tutorials/simple_gain_plugin.md
   - Modules:
     - dsp:
       - gain: modules/dsp/gain.md
