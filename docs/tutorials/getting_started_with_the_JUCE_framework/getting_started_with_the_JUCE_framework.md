@@ -30,4 +30,4 @@ First you need to open *Projucer*. On the top left click on `File>Global Paths..
 and then close this window.
 
 
-Now you should be all setup to [create a JUCE project](/tutorials/create_a_juce_project).
+Now you should be all setup to [create a JUCE project](/tutorials/create_a_juce_project/create_a_juce_project).
