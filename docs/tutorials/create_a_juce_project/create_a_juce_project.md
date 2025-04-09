@@ -1,4 +1,9 @@
 # Create a JUCE project
+
+## Prerequisites
+- Completed [Whats JUCE and how to use it](tutorials/whats_juce_and_how_to_use_it/whats_juce_and_how_to_use_it)
+- Completed [Getting started with the JUCE framework](tutorials/getting_started_with_the_JUCE_framework/getting_started_with_the_JUCE_framework)
+
 ## Select project type
 The first time you launch *Projucer*, you are presented with the *New Project* window:
 

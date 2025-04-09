@@ -1,6 +1,8 @@
 # Whats JUCE and how to use it
 JUCE is a framework for the programming language *C++*. This maybe doesn't sound like much to you, but it will make sense in a second.
 
+## Prerequisites
+- None
 
 ## What is a framework?
 Imagine this scenario:
