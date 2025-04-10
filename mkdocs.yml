@@ -6,3 +6,4 @@ nav:
       - What is JUCE?: getting_started/what_is_juce/what_is_juce.md
       - Installation: getting_started/installation/installation.md
       - Simple audio plugin: getting_started/simple_audio_plugin/simple_audio_plugin.md
+      - Plugin architecture: getting_started/plugin_architecture/plugin_architecture.md
