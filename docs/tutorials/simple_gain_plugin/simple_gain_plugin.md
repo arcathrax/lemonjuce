@@ -1,1 +1,0 @@
-# Simple Gain Plugin

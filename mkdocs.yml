@@ -1,13 +1,7 @@
 site_name: JUCEDocs
 
 nav:
-  - Tutorials:
-      - Whats JUCE and how to use it: tutorials/whats_juce_and_how_to_use_it/whats_juce_and_how_to_use_it.md
-      - Getting started with the JUCE framework: tutorials/getting_started_with_the_JUCE_framework/getting_started_with_the_JUCE_framework.md
-      - Create a JUCE project: tutorials/create_a_juce_project/create_a_juce_project
-      - Simple Gain Plugin: tutorials/simple_gain_plugin/simple_gain_plugin.md
-  - Modules:
-      - audio:
-          - AudioProcessorValueTreeState: modules/audio/AudioProcessorValueTreeState.md
-      - dsp:
-          - gain: modules/dsp/gain.md
+  - Home: index.md
+  - Getting Started:
+      - What is JUCE?: getting_started/what_is_juce/what_is_juce.md
+      - Installation: getting_started/installation/installation.md
