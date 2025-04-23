@@ -111,7 +111,7 @@ void APVTSTestingAudioProcessorEditor::resized()
 
 If we now run the program, it should display a slider:
 
-![screenshot of the window with a slider in it](images/implementing_an_audioprocessorvaluetreestate/slider_screenshot.png)
+![screenshot of the window with a slider in it](images/implementing_an_apvts/slider_screenshot.png)
 
 After that, we need to attach the parameter to the slider.
 

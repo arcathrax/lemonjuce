@@ -9,7 +9,7 @@ nav:
       - Plugin architecture: getting_started/plugin_architecture.md
       - Running and debugging: getting_started/running_and_debugging.md
   - Advanced:
-    - Implementing an AudioProcessorValueTreeState: advanced/implementing_an_audioprocessorvaluetreestate.md
+    - Implementing an APVTS: advanced/implementing_an_apvts.md
 
 theme:
   name: readthedocs
