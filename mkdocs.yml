@@ -7,7 +7,6 @@ nav:
       - Installation: getting_started/installation.md
       - Creating an audio plugin: getting_started/creating_an_audio_plugin.md
       - Plugin architecture: getting_started/plugin_architecture.md
-      - Running and debugging: getting_started/running_and_debugging.md
   - Advanced:
     - Implementing an APVTS: advanced/implementing_an_apvts.md
 
