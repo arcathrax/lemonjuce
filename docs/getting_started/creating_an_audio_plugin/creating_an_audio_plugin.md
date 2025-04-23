@@ -1,4 +1,4 @@
-# Simple audio plugin
+# Creating an audio plugin
 
 ## Create the project
 To create an audio plug-in with JUCE, open "Projucer" and select "Plug-In>Basic". See [Creating an Application](/getting_started/installation/installation/#creating-an-application) if you don't know how to do that. In this tutorial we're going to name this plugin `SimpleAudioPlugin`.
