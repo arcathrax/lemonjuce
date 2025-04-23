@@ -7,3 +7,5 @@ nav:
       - Installation: getting_started/installation/installation.md
       - Creating an audio plugin: getting_started/creating_an_audio_plugin/creating_an_audio_plugin.md
       - Plugin architecture: getting_started/plugin_architecture/plugin_architecture.md
+  - Advanced:
+    - Implementing an AudioProcessorValueTreeState: advanced/implementing_an_audioprocessorvaluetreestate/implementing_an_audioprocessorvaluetreestate.md
