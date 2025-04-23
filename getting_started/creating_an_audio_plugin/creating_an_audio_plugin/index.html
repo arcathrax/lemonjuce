@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+        <title>Creating an audio plugin - lemonjuce</title>
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../../css/brands.min.css" rel="stylesheet">
+        <link href="../../../css/solid.min.css" rel="stylesheet">
+        <link href="../../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../../..">lemonjuce</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Getting Started</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../what_is_juce/what_is_juce/" class="dropdown-item">What is JUCE?</a>
+</li>
+                                    
+<li>
+    <a href="../../installation/installation/" class="dropdown-item">Installation</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Creating an audio plugin</a>
+</li>
+                                    
+<li>
+    <a href="../../plugin_architecture/plugin_architecture/" class="dropdown-item">Plugin architecture</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Advanced</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../../advanced/implementing_an_audioprocessorvaluetreestate/implementing_an_audioprocessorvaluetreestate/" class="dropdown-item">Implementing an AudioProcessorValueTreeState</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../../installation/installation/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../../plugin_architecture/plugin_architecture/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#creating-an-audio-plugin" class="nav-link">Creating an audio plugin</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#create-the-project" class="nav-link">Create the project</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#setup-debugging-environment-optional" class="nav-link">Setup debugging environment (optional)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#automatically-run-audiopluginhost" class="nav-link">Automatically run AudioPluginHost</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="creating-an-audio-plugin">Creating an audio plugin</h1>
+<h2 id="create-the-project">Create the project</h2>
+<p>To create an audio plug-in with JUCE, open "Projucer" and select "Plug-In&gt;Basic". See <a href="/getting_started/installation/installation/#creating-an-application">Creating an Application</a> if you don't know how to do that. In this tutorial we're going to name this plugin <code>SimpleAudioPlugin</code>.</p>
+<p>In this tutorial, we are going to create a VST3 plug-in, so make sure, that the <strong>VST3 setting</strong> is ticked in the Plugin Formats field in the <em>project configuration</em> settings:</p>
+<p><img alt="project configuration screenshot" src="../images/project_configuration_screenshot.png" />
+<em>Project configuration</em></p>
+<p>In the <em>project configuration</em> you can change and tweak much more settings. Here you can change for example the project version, the plug-in type (generator or effect), change the plug-in category (ex. distortion or delay) and much more. However we dont need to change anything besides the "plugin format".</p>
+<p>Next click the "<strong>Save and Open in IDE</strong>"-button and <strong>build it</strong>.</p>
+<h2 id="setup-debugging-environment-optional">Setup debugging environment (optional)</h2>
+<p>When creating a audio plugin, accessing it fast and reliable is sometimes a hassle since DAW's sometimes have issues finding updated plugins and are very cpu intensive. Thankfully, JUCE has a simple environment to debug your application called "AudioPluginHost". This application serves as a host for your plug-ing and you can use it just like in a DAW. The "AudioPluginHost" can be started very quickly and is very easy to use, which makes it perfect for debugging.</p>
+<p>To use the "AudioPluginHost", you first need to build it, since it doesn't come pre-compiled, like "Projucer" does. Go to <code>JUCE/extras/AudioPluginHost</code> and open the <code>.jucer</code> file. Click the "Save and Open in IDE"-button and build the project. This will create a binary file, located in one of the following folders:</p>
+<table>
+<thead>
+<tr>
+<th>OS</th>
+<th>Location</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>macOS</td>
+<td><code>JUCE/extras/AudioPluginHost/Builds/MacOSX/build/...</code></td>
+</tr>
+<tr>
+<td>Windows</td>
+<td><code>JUCE\extras\AudioPluginHost\Builds\VisualStudio2022\...</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Note: The application is somewhere in the subfolders of the build folder.</p>
+</blockquote>
+<p>You can can change the location of the "AudioPluginHost" to your likings.</p>
+<p>If you run the "AudioPluginHost", you should see the graphical node editor that looks like this:</p>
+<p><img alt="graphical node_editor screenshot" src="../images/graphical_node_editor_screenshot.png" /></p>
+<p>You can search for plugins by going to <strong>Options&gt;Edit the List of Available Plug-ins...</strong>. Click <strong>Options...&gt;Scan for new or updated VST3 plug-ins</strong> to see the folders, that should be scanned by the "AudioPluginHost". Here you can select the folders, that are going to be scanned for new VST3 plug-ins. Here you can add or remove custom directories:</p>
+<p><img alt="folders to be scanned screenshot" src="../images/folders_to_be_scanned_screenshot.png" /></p>
+<p>Once the scan is complete go back to the node editor and right click, then select your plug-in from the context menu (it will be under a company called "yourcompany" by default. You can edit this in the "Projucer"). Connect the nodes up such that the Audio is routed to and from the "SimpleAudioPlugin":</p>
+<p><img alt="routings screenshot" src="../images/routings_screenshot.png" /></p>
+<p>If you now <strong>double click</strong> onto the plugin node, you open the GUI of the plugin. The default does nothing but show <em>Hello world</em>.</p>
+<h2 id="automatically-run-audiopluginhost">Automatically run AudioPluginHost</h2>
+<p>If you want to run "AudioPluginHost" automatically when building your project, you can do that via the IDE. </p>
+<p>In <strong>Xcode</strong> click <code>Product&gt;Scheme&gt;Edit Scheme...</code>, then under <code>Run&gt;Info&gt;Executable&gt;Other...</code> search and select the "AudioPluginHost".</p>
+<p>In <strong>Visual Studio</strong> go to <code>SimpleAudioPlugin_VST3 Debug Properties&gt;Debugging&gt;Command</code> and change it to the path to the "AudioPluginHost".</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../js/base.js"></script>
+        <script src="../../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
