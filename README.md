@@ -4,13 +4,20 @@ This is my personal collection of notes and examples related to using JUCE. I cr
 
 One thing I’ve found frustrating with the official JUCE tutorials is that they sometimes rely on custom classes defined in previous tutorials. It can be a bit of a surprise when you're trying to follow along and suddenly get errors because you haven't created those supporting classes yet! This documentation aims to provide more complete, self-contained examples whenever possible, or at least clearly indicate any dependencies on earlier tutorial content.
 
+The files are ordered in a way, that you, as a reader, should be able to make sence of it. However JUCE is a big framework and this documentation can not hold the information and implementation of any JUCE class.
+
 ## ToDo
 - Beginner
+  - [x] `What is JUCE?`
+  - [x] `Installation`
+  - [x] `Creating an audio plugin`
+  - [x] `Plugin architecture`
   - [ ] `Creating a custom component`
   - [ ] `Drawing images on to a screen`
+- Intermediate
+  - [x] `Implementing an apvts`
   - [ ] `Implementing a ProcessorChain`
   - [ ] `Implementing a AudioProcessorGraph`
-- Intermediate
   - [ ] `Creating a custom look and feel`
   - [ ] `Creating a custom module`
   - [ ] `Implementing a IIR Filter`
