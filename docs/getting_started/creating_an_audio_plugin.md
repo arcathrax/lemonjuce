@@ -1,11 +1,11 @@
 # Creating an audio plugin
 
 ## Create the project
-To create an audio plug-in with JUCE, open "Projucer" and select "Plug-In>Basic". See [Creating an Application](/getting_started/installation/installation/#creating-an-application) if you don't know how to do that. In this tutorial we're going to name this plugin `SimpleAudioPlugin`.
+To create an audio plug-in with JUCE, open "Projucer" and select "Plug-In>Basic". See [Creating an Application](/getting_started/installation/#creating-an-application) if you don't know how to do that. In this tutorial we're going to name this plugin `SimpleAudioPlugin`.
 
 In this tutorial, we are going to create a VST3 plug-in, so make sure, that the **VST3 setting** is ticked in the Plugin Formats field in the *project configuration* settings:
 
-![project configuration screenshot](images/project_configuration_screenshot.png)
+![project configuration screenshot](images/creating_an_audio_plugin/project_configuration_screenshot.png)
 *Project configuration*
 
 In the *project configuration* you can change and tweak much more settings. Here you can change for example the project version, the plug-in type (generator or effect), change the plug-in category (ex. distortion or delay) and much more. However we dont need to change anything besides the "plugin format".
@@ -28,15 +28,15 @@ You can can change the location of the "AudioPluginHost" to your likings.
 
 If you run the "AudioPluginHost", you should see the graphical node editor that looks like this:
 
-![graphical node_editor screenshot](images/graphical_node_editor_screenshot.png)
+![graphical node_editor screenshot](images/creating_an_audio_plugin/graphical_node_editor_screenshot.png)
 
 You can search for plugins by going to **Options>Edit the List of Available Plug-ins...**. Click **Options...>Scan for new or updated VST3 plug-ins** to see the folders, that should be scanned by the "AudioPluginHost". Here you can select the folders, that are going to be scanned for new VST3 plug-ins. Here you can add or remove custom directories:
 
-![folders to be scanned screenshot](images/folders_to_be_scanned_screenshot.png)
+![folders to be scanned screenshot](images/creating_an_audio_plugin/folders_to_be_scanned_screenshot.png)
 
 Once the scan is complete go back to the node editor and right click, then select your plug-in from the context menu (it will be under a company called "yourcompany" by default. You can edit this in the "Projucer"). Connect the nodes up such that the Audio is routed to and from the "SimpleAudioPlugin":
 
-![routings screenshot](images/routings_screenshot.png)
+![routings screenshot](images/creating_an_audio_plugin/routings_screenshot.png)
 
 If you now **double click** onto the plugin node, you open the GUI of the plugin. The default does nothing but show *Hello world*.
 

@@ -17,14 +17,14 @@ Unpack the JUCE folder and place it to some location on your computer. Your user
 Go into the JUCE folder you just moved. Launch the "Projucer", which is located in there.
 
 >Note: You need to setup the path to JUCE and the JUCE modules. This should look something like this:
->![Global Paths screenshot](images/global_paths_screenshot.png)
+>![Global Paths screenshot](images/installation/global_paths_screenshot.png)
 
 
 ## Creating an Application
 If you are launching "Projucer" for the first time, you are presented with the new project window. You also can access this window via `File>New Project`.
 
 *Projucer - New Project Window*
-![New Project screenshot](images/new_project_screenshot.png)
+![New Project screenshot](images/installation/new_project_screenshot.png)
 
 ### Select your project type
 On the left-hand side of "Projucer", you can select a project type. This will add all the dependencies to create the programm selected and create code, to make the application run.
@@ -63,12 +63,12 @@ The Projucer currently has exporters for the following IDEs:
 | Android | Android Studio |
 
 >Note: If you use **Visual Studio** create a **audio plugin** and don't want to manually copy the plugin after every build, I suggest you to enable the "Plugin Copy Step":
->![Plugin Copy Step Screenshot](images/plugin_copy_step_screenshot.png)
+>![Plugin Copy Step Screenshot](images/installation/plugin_copy_step_screenshot.png)
 
 
 ## Export the project and open in IDE
 After you created your project and set everything up, you can launch your IDE withing Projucer:
-![Export in IDE screenshot](images/export_in_ide_screenshot.png)
+![Export in IDE screenshot](images/installation/export_in_ide_screenshot.png)
 
 
 ## Open existing projects
