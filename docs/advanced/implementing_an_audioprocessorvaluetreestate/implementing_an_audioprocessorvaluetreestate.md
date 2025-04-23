@@ -109,7 +109,7 @@ void APVTSTestingAudioProcessorEditor::resized()
 }
 ```
 
-If we now run the program, it should desplay a slider:
+If we now run the program, it should display a slider:
 
 ![screenshot of the window with a slider in it](images/slider_screenshot.png)
 
