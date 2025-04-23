@@ -11,6 +11,8 @@ In addition, you need to install the C++ toolchain for the according opperating 
 
 You now may download JUCE from [here](https://juce.com/download/).
 
+![screenshot of the downloadsite on the JUCE website](images/installation/JUCE_downloadsite.png)
+
 
 Unpack the JUCE folder and place it to some location on your computer. Your user home folder is a convenient place.
 
