@@ -2,3 +2,5 @@
 Welcome to lemonjuce. This is my personal collection of notes and examples related to using JUCE. I created it as a way to keep track of useful information – things I often find myself needing but that are scattered across forums and other resources.  It's meant to be a quick reference for me, [arcathrax](https://github.com/arcathrax), so I don't have to hunt down the same solutions every time!
 
 One thing I’ve found frustrating with the official JUCE tutorials is that they sometimes rely on custom classes defined in previous tutorials. It can be a bit of a surprise when you're trying to follow along and suddenly get errors because you haven't created those supporting classes yet! This documentation aims to provide more complete, self-contained examples whenever possible, or at least clearly indicate any dependencies on earlier tutorial content.
+
+The files are ordered in a way, that you, as a reader, should be able to make sence of it. However JUCE is a big framework and this documentation can not hold the information and implementation of any JUCE class.
