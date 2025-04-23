@@ -9,3 +9,6 @@ nav:
       - Plugin architecture: getting_started/plugin_architecture/plugin_architecture.md
   - Advanced:
     - Implementing an AudioProcessorValueTreeState: advanced/implementing_an_audioprocessorvaluetreestate/implementing_an_audioprocessorvaluetreestate.md
+
+theme:
+  name: readthedocs
