@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Contributing - lemonjuce</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Contributing";
+        var mkdocs_page_input_path = "general_information/contributing.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> lemonjuce
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/what_is_juce/">What is JUCE?</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/installation/">Installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/creating_an_audio_plugin/">Creating an audio plugin</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/plugin_architecture/">Plugin architecture</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Advanced</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Parameter handling</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/implementing_an_apvts/">Implementing an APVTS</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >GUI</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../advanced/creating_a_custom_look_and_feel/">Creating a Custom Look and Feel</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">General information</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Contributing</a>
+    <ul class="current">
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">lemonjuce</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">General information</li>
+      <li class="breadcrumb-item active">Contributing</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="contributing">Contributing</h1>
+<h1 id="contributing-to-lemonjuce">Contributing to lemonjuce</h1>
+<p>Welcome! Our goal is to provide clear, practical, and a self-contained documentation for JUCE development. Your contributions are vital to making that happen.</p>
+<h2 id="why-contribute">Why Contribute?</h2>
+<p>lemonjuce aims to bridge the gap between the powerful capabilities of JUCE and the sometimes-opaque nature of its documentation. By contributing, you'll:</p>
+<ul>
+<li><strong>Improve your own understanding</strong>: Explaining concepts helps solidify them in your mind.</li>
+<li><strong>Help others</strong>:  Share your knowledge and make JUCE development more accessible to everyone.</li>
+<li><strong>Shape lemonjuce</strong>: Help us define the scope and quality of our documentation.</li>
+</ul>
+<h2 id="how-to-contribute">How to Contribute</h2>
+<p>We welcome contributions in various forms:</p>
+<ul>
+<li><strong>Writing Documentation Pages</strong>: This is our primary need.  See "Style Guide" below for formatting guidelines.</li>
+<li><strong>Fixing Typos and Errors</strong>: Even small corrections make a big difference.</li>
+<li><strong>Improving Examples</strong>: Clear, concise examples are invaluable.</li>
+<li><strong>Suggesting New Topics</strong>: Let us know what you'd like to see covered.</li>
+<li><strong>Reporting Issues</strong>:  If you find something unclear or incorrect, please report it!</li>
+</ul>
+<h2 id="getting-started">Getting Started</h2>
+<ul>
+<li>
+<p><strong>Fork the Repository</strong>: Go to <a href="https://github.com/arcathrax/lemonjuce">https://github.com/arcathrax/lemonjuce</a> and click the "Fork" button.</p>
+</li>
+<li>
+<p><strong>Clone Your Fork</strong>: Clone your forked repository to your local machine:</p>
+</li>
+</ul>
+<pre><code class="language-bash">git clone git@github.com:&lt;your_username&gt;/lemonjuce.git
+cd lemonjuce
+</code></pre>
+<ul>
+<li><strong>Create a Branch</strong>: Create a new branch for your changes. This keeps your work isolated and makes it easier to review. Use descriptive names!</li>
+</ul>
+<pre><code class="language-bash">git checkout -b my-new-feature-or-fix
+</code></pre>
+<ul>
+<li><strong>Make Your Changes</strong>: Edit the Markdown files in the <code>docs/</code> directory. (See "Style Guide" below).</li>
+<li><strong>Commit Your Changes</strong>: Commit your changes with clear and concise commit messages.</li>
+</ul>
+<pre><code class="language-bash">git add .
+git commit -m &quot;Fix: Corrected typo in LookAndFeel documentation&quot;
+# or
+git commit -m &quot;Feat: Documentation for CustomLookAndFeel class&quot;
+</code></pre>
+<ol>
+<li><strong>Push to Your Fork</strong>: Push your branch to your forked repository on GitHub.</li>
+</ol>
+<pre><code class="language-bash">git push origin my-new-feature-or-fix
+</code></pre>
+<ol>
+<li><strong>Create a Pull Request</strong>: Go to your forked repository on GitHub and click the "Create Pull Request" button.  Provide a detailed description of your changes, explaining <em>why</em> they are valuable.</li>
+</ol>
+<h2 id="style-guide">Style Guide</h2>
+<p>To ensure consistency and readability, please follow these guidelines:</p>
+<ul>
+<li><strong>Markdown Formatting</strong>: Use standard Markdown syntax.</li>
+<li><strong>Headings</strong>: Use clear and descriptive headings (e.g., <code># Creating a Custom LookAndFeel</code>, <code>## Implementation</code>).</li>
+<li><strong>Code Blocks</strong>:  Use fenced code blocks with the appropriate language identifier (e.g., ```cpp for C++ code).</li>
+<li><strong>Images</strong>: Images should be hosted on GitHub or linked from external sources. Use descriptive alt text for accessibility.</li>
+<li><strong>Links</strong>: Link to relevant JUCE documentation and other resources whenever possible.  Use meaningful link text.</li>
+<li><strong>Tone</strong>: Write in a clear, concise, and friendly tone. Assume the reader has some basic JUCE knowledge but may be struggling with specific concepts. <em>Explain the "why" as much as the "how."</em></li>
+<li><strong>Examples</strong>: Provide practical examples that illustrate the concepts being explained.  Keep examples short and focused.</li>
+<li><strong>Consistency</strong>: Follow the existing style of lemonjuce documentation. Look at other pages for inspiration.</li>
+</ul>
+<h2 id="commit-message-conventions">Commit Message Conventions</h2>
+<p>We follow these conventions to keep our commit history clean and understandable:</p>
+<ul>
+<li><strong>Prefix</strong>: Use a prefix to indicate the type of change (e.g., <code>feat</code>, <code>fix</code>, <code>refactor</code>, <code>style</code>).</li>
+<li><strong>Scope</strong>: Specify the area of the project affected by the change (e.g., <code>LookAndFeel</code>, <code>Graphics</code>).</li>
+<li><strong>Description</strong>: Briefly describe the change in imperative mood (e.g., "Corrected typo", "Add documentation").</li>
+</ul>
+<p>Examples: </p>
+<ul>
+<li><code>fix(creating_a_custom_look_and_feel.md): Corrected typo in drawRotarySlider function</code></li>
+<li><code>feat(creating_a_custom_look_and_feel.md): Create file</code></li>
+<li><code>feat(installation.md): Wrote "Creating an Application" section</code></li>
+<li><code>feat(contributing.md): Created file and wrote initial sections</code></li>
+</ul>
+<h2 id="contact">Contact</h2>
+<p>For questions or discussions, please open an issue on GitHub.</p>
+<p>We look forward to your contributions!</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../advanced/creating_a_custom_look_and_feel/" class="btn btn-neutral float-left" title="Creating a Custom Look and Feel"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../advanced/creating_a_custom_look_and_feel/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
