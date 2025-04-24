@@ -18,8 +18,10 @@ Unpack the JUCE folder and place it to some location on your computer. Your user
 
 Go into the JUCE folder you just moved. Launch the "Projucer", which is located in there.
 
->Note: You need to setup the path to JUCE and the JUCE modules. This should look something like this:
->![Global Paths screenshot](images/installation/global_paths_screenshot.png)
+![Screenshot of the Projucer application in a file explorer](images/installation/Projucer_in_file_explorer.png)
+
+Next, you should set the global paths for "Projucer". You can do this via the menu bar on the top left:
+![Global Paths screenshot](images/installation/global_paths_screenshot.png)
 
 
 ## Creating an Application
