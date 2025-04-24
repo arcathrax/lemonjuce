@@ -29,7 +29,7 @@ The files are ordered in a way, that you, as a reader, should be able to make se
     - [ ] `Implementing a IIR Filter`
     - [ ] `Creating a custom processor`
   - `GUI`
-    - [ ] `Creating a custom look and feel`
+    - [x] `Creating a Custom Look and Feel`
     - [ ] `Creating a volume meter`
 - Advanced
   - [ ] `Creating a openGL component`

@@ -8,7 +8,11 @@ nav:
       - Creating an audio plugin: getting_started/creating_an_audio_plugin.md
       - Plugin architecture: getting_started/plugin_architecture.md
   - Advanced:
-    - Implementing an APVTS: advanced/implementing_an_apvts.md
+    - Parameter handling:
+      - Implementing an APVTS: advanced/implementing_an_apvts.md
+    - GUI:
+      - Creating a Custom Look and Feel: advanced/creating_a_custom_look_and_feel.md 
+    
 
 theme:
   name: readthedocs
