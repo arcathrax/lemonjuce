@@ -12,7 +12,8 @@ nav:
       - Implementing an APVTS: advanced/implementing_an_apvts.md
     - GUI:
       - Creating a Custom Look and Feel: advanced/creating_a_custom_look_and_feel.md 
-    
+  - General information:
+    - Contributing: general_information/contributing.md
 
 theme:
   name: readthedocs

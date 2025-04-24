@@ -41,6 +41,7 @@ The files are ordered in a way, that you, as a reader, should be able to make se
     - [ ] `Setting up Code Signing`
     - [ ] `Package your app or plugin for distribution`
   - [ ] `Other ressources`
+  - [x] `Contributing page`
 
 
 ## Start your own docs server
