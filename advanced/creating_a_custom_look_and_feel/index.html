@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Creating a Custom Look and Feel - lemonjuce</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Creating a Custom Look and Feel";
+        var mkdocs_page_input_path = "advanced/creating_a_custom_look_and_feel.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> lemonjuce
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/what_is_juce/">What is JUCE?</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/installation/">Installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/creating_an_audio_plugin/">Creating an audio plugin</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/plugin_architecture/">Plugin architecture</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Advanced</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" >Parameter handling</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../implementing_an_apvts/">Implementing an APVTS</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >GUI</a>
+    <ul class="current">
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Creating a Custom Look and Feel</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#what-is-a-lookandfeel">What is a LookAndFeel?</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#implementation">Implementation</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#creating-the-files">Creating the files</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#the-header-file">The Header File</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#the-source-file">The Source File</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#using-your-custom-lookandfeel">Using Your Custom LookAndFeel</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#further-customization-considerations">Further Customization &amp; Considerations</a>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">lemonjuce</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Advanced</li>
+          <li class="breadcrumb-item">GUI</li>
+      <li class="breadcrumb-item active">Creating a Custom Look and Feel</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="creating-a-custom-look-and-feel">Creating a Custom Look and Feel</h1>
+<h2 id="what-is-a-lookandfeel">What is a LookAndFeel?</h2>
+<p>In Juce, the <code>LookAndFeel</code> class provides an abstraction layer for visual styling of your application's user interface elements. Think of it as a theme engine. It defines how components like buttons, sliders, text labels, and windows <em>look</em> – their colours, fonts, borders, shapes, and overall aesthetic.</p>
+<p>Without a LookAndFeel, Juce would default to a basic, often unappealing, visual style. By implementing or using pre-built <code>LookAndFeel</code> classes, you can easily customize the appearance of your application to match its brand, desired feel (modern, retro, minimalist, etc.), and platform conventions.  Using a custom LookAndFeel allows for consistent styling across different platforms while still maintaining a unique identity.</p>
+<h2 id="implementation">Implementation</h2>
+<h3 id="creating-the-files">Creating the files</h3>
+<p>First, the required files need to be created. This is done via the <a href="/getting_started/what_is_juce/#projucer">Projucer</a> application.  The <a href="/getting_started/what_is_juce/#projucer">Projucer</a> will generate the necessary header and source code files for your custom LookAndFeel class.</p>
+<p><img alt="screenshot of where to find the option to create the new files" src="../images/creating_a_custom_look_and_feel/create_new_files.png" /></p>
+<h3 id="the-header-file">The Header File</h3>
+<p>Since we don't want to create everything from scratch, we inherit from an existing JUCE <code>LookAndFeel</code> class.  The recommended base class is <code>juce::LookAndFeel_V4</code>, which represents the newest and most "up-to-date" LookAndFeel provided by the Juce framework. This provides a good foundation for customization while leveraging existing functionality.</p>
+<p>Make sure you include the JUCE header, as we need some JUCE classes. Next, we define the class.  We will override specific functions from <code>juce::LookAndFeel_V4</code> to customize its behavior.</p>
+<p><strong>file</strong>: <code>CustomLookAndFeel.h</code></p>
+<pre><code class="language-cpp">#pragma once
+#include &lt;JuceHeader.h&gt;
+class CustomLookAndFeel : public juce::LookAndFeel_V4
+{
+    public:
+        CustomLookAndFeel();
+        void drawRotarySlider(juce::Graphics&amp; g, int x, int y, int width, int height, float sliderPos, float rotaryStartAngle, float rotaryEndAngle, Slider&amp; slider) override;
+
+    private:
+        JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CustomLookAndFeel)
+};
+</code></pre>
+<p><strong>Explanation:</strong></p>
+<ul>
+<li><code>#pragma once</code>:  Ensures the header file is included only once during compilation.</li>
+<li><code>juce::Graphics&amp; g</code>: This is a reference to the graphics context used for drawing.</li>
+<li><code>Slider&amp; slider</code>: A reference to the <code>Slider</code> object being drawn.  This allows you to access its properties and potentially modify its appearance directly within the draw function.</li>
+<li><code>JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CustomLookAndFeel)</code>: Prevents copying of the LookAndFeel class, which is generally desirable for consistency and resource management.  The leak detector helps identify potential memory issues if you accidentally try to copy it.</li>
+</ul>
+<h3 id="the-source-file">The Source File</h3>
+<p>Next, we implement the functions declared in the header file. Drawing custom UI elements requires careful calculation and drawing operations.</p>
+<p><strong>file</strong>: <code>CustomLookAndFeel.cpp</code></p>
+<pre><code class="language-cpp">#include &quot;CustomLookAndFeel.h&quot;
+
+CustomLookAndFeel::CustomLookAndFeel()
+{
+    setColour(juce::ResizableWindow::backgroundColourId, juce::Colours::black);
+    setColour(juce::Slider::backgroundColourId, juce::Colour(36, 5, 5));
+    setColour(juce::Slider::trackColourId, juce::Colour(0xFF820104));
+}
+
+
+void CustomLookAndFeel::drawRotarySlider (juce::Graphics&amp; g, int x, int y, int width, int height, float sliderPosProportional, float rotaryStartAngle, float rotaryEndAngle, juce::Slider&amp; slider)
+{
+    // slider properties
+    slider.setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);
+    slider.setVelocityModeParameters(1.0, 1, 0.0, true, juce::ModifierKeys::shiftModifier);
+
+    // calculate variables
+    juce::Rectangle&lt;float&gt; bounds;
+    bounds = juce::Rectangle&lt;int&gt;(x, y, width, height).toFloat();
+    auto radius = bounds.getWidth() / 2.0f;
+    auto lineWidth = 3.0f;
+    auto arcRadius = radius - lineWidth / 2.0f;
+    float angle = rotaryStartAngle + sliderPosProportional * (rotaryEndAngle - rotaryStartAngle);
+    float centerX = x + width * 0.5f;
+    float centerY = y + height * 0.5f;
+
+    // draw background circle
+    g.setColour(slider.findColour(juce::Slider::backgroundColourId));
+    g.fillEllipse(bounds);
+
+    // draw arc
+    auto strokeType = juce::PathStrokeType(
+            lineWidth, juce::PathStrokeType::curved, juce::PathStrokeType::rounded);
+    juce::Path valueArc;
+    valueArc.addCentredArc(centerX,
+        centerY,
+        arcRadius,
+        arcRadius,
+        0.0f,
+        rotaryStartAngle,
+        angle,
+        true);
+    g.setColour(slider.findColour(juce::Slider::trackColourId));
+    g.strokePath(valueArc, strokeType);
+}
+</code></pre>
+<p><strong>Explanation:</strong></p>
+<ul>
+<li><code>#include &lt;JuceHeader.h&gt;</code>:  Crucially important to include the <code>JuceHeader</code> header file so that you can access the classes and methods of the JUCE framework.</li>
+<li><code>setColour(juce::ResizableWindow::backgroundColourId, juce::Colours::black);</code>: Sets the background colour of resizable windows (like your main application window) to black.  <code>juce::Colours::black</code> is a convenient way to specify standard colours.</li>
+<li><code>setColour(juce::Slider::backgroundColourId, juce::Colour(36, 5, 5));</code>: Sets the background colour of sliders to a very dark red. The <code>36, 5, 5</code> represents the rgb values for the color.</li>
+<li><code>setColour(juce::Slider::trackColourId, juce::Colour(0xFF820104));</code>: Sets the track colour of sliders to a dark red. The <code>0xFF820104</code> represents the hexadecimal value for the color (with the alpha channel set to fully opaque).</li>
+<li><code>drawRotarySlider</code>: This function is responsible for drawing the visual representation of a rotary slider.  It calculates various parameters like radius, line width, and arc angle based on the provided dimensions and slider position. It then uses <code>juce::Path</code> to create an elliptical arc representing the slider's value and draws it using <code>g.strokePath</code>. The properties of the slider are also configured here. For example, we now have shift-functionality.</li>
+</ul>
+<h2 id="using-your-custom-lookandfeel">Using Your Custom LookAndFeel</h2>
+<p>To use your custom LookAndFeel in your application:</p>
+<ul>
+<li><strong>Include necessary header</strong>: Include the header for your LookAndFeel class.</li>
+<li><strong>Instantiation</strong>: Create an instance of your <code>CustomLookAndFeel</code> class.</li>
+</ul>
+<p><strong>file</strong>: <code>PluginEditor.h</code> or <code>MainComponent.h</code></p>
+<pre><code class="language-cpp">#pragma once
+#include &lt;JuceHeader.h&gt;
+#include &quot;CustomLookAndFeel.h&quot;
+
+class MainComponent  : public juce::Component
+{
+public:
+    MainComponent();
+    ~MainComponent() override;
+    void paint (juce::Graphics&amp;) override;
+    void resized() override;
+
+private:
+    CustomLookAndFeel customLookAndFeel;
+    juce::Slider slider;
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
+};
+</code></pre>
+<ul>
+<li><strong>Setting the LookAndFeel</strong>: Use <code>setLookAndFeel()</code> on your main component or window and a slider.</li>
+<li><strong>Delete references in destructor</strong>: In the destructor use <code>setLookAndFeel(nullptr)</code> to avoid bugs.</li>
+</ul>
+<p><strong>file</strong>: <code>PluginEditor.cpp</code> or <code>MainComponent.cpp</code></p>
+<pre><code class="language-cpp">#include &quot;MainComponent.h&quot;
+MainComponent::MainComponent()
+{
+    setSize (600, 600);
+    addAndMakeVisible(slider);
+    setLookAndFeel(&amp;customLookAndFeel);
+    slider.setLookAndFeel(&amp;customLookAndFeel);
+    slider.setSliderStyle(juce::Slider::RotaryHorizontalVerticalDrag);
+}
+MainComponent::~MainComponent()
+{
+    setLookAndFeel(nullptr);
+    slider.setLookAndFeel(nullptr);
+}
+void MainComponent::paint (juce::Graphics&amp; g)
+{
+    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
+}
+void MainComponent::resized()
+{
+    slider.setBounds(getBounds());
+}
+</code></pre>
+<h2 id="further-customization-considerations">Further Customization &amp; Considerations</h2>
+<ul>
+<li><strong>Other Components:</strong>  You can override other drawing functions in <code>LookAndFeel_V4</code> to customize the appearance of other UI components like buttons, text labels, and knobs.  Refer to the <a href="https://juce.com/learn/documentation/">Juce documentation</a> for a <a href="https://docs.juce.com/master/classLookAndFeel__V4.html">complete list</a> of available overrides.</li>
+<li><strong>Color Management</strong>: Consider using <code>juce::Colour</code> objects for all color definitions. This allows for easier manipulation and consistency across your application.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../implementing_an_apvts/" class="btn btn-neutral float-left" title="Implementing an APVTS"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../implementing_an_apvts/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
