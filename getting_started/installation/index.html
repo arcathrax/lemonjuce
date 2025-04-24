@@ -4,21 +4,21 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
     <title>Installation - lemonjuce</title>
-    <link rel="stylesheet" href="../../../css/theme.css" />
-    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
         var mkdocs_page_name = "Installation";
-        var mkdocs_page_input_path = "getting_started/installation/installation.md";
+        var mkdocs_page_input_path = "getting_started/installation.md";
         var mkdocs_page_url = null;
       </script>
     
     <!--[if lt IE 9]>
-      <script src="../../../js/html5shiv.min.js"></script>
+      <script src="../../js/html5shiv.min.js"></script>
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
       <script>hljs.highlightAll();</script> 
@@ -30,9 +30,9 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../../.." class="icon icon-home"> lemonjuce
+          <a href="../.." class="icon icon-home"> lemonjuce
         </a><div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
   </form>
 </div>
@@ -40,12 +40,12 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Getting Started</span></p>
               <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../../what_is_juce/what_is_juce/">What is JUCE?</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../what_is_juce/">What is JUCE?</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Installation</a>
     <ul class="current">
@@ -65,14 +65,14 @@
     </li>
     </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../creating_an_audio_plugin/creating_an_audio_plugin/">Creating an audio plugin</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../creating_an_audio_plugin/">Creating an audio plugin</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../plugin_architecture/plugin_architecture/">Plugin architecture</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../plugin_architecture/">Plugin architecture</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Advanced</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../advanced/implementing_an_audioprocessorvaluetreestate/implementing_an_audioprocessorvaluetreestate/">Implementing an AudioProcessorValueTreeState</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/implementing_an_apvts/">Implementing an APVTS</a>
                   </li>
               </ul>
       </div>
@@ -82,13 +82,13 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../..">lemonjuce</a>
+          <a href="../..">lemonjuce</a>
         
       </nav>
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Getting Started</li>
       <li class="breadcrumb-item active">Installation</li>
     <li class="wy-breadcrumbs-aside">
@@ -106,16 +106,16 @@
 <p><strong>Visual Studio</strong>: During installation, ensure that you select the "Desktop development with C++" workload.</p>
 <p><strong>Xcode</strong>: After installation, ensure that you the right components: <code>File&gt;Settings&gt;Components&gt;macOS XX.X</code></p>
 <p>You now may download JUCE from <a href="https://juce.com/download/">here</a>.</p>
+<p><img alt="screenshot of the downloadsite on the JUCE website" src="../images/installation/JUCE_downloadsite.png" /></p>
 <p>Unpack the JUCE folder and place it to some location on your computer. Your user home folder is a convenient place.</p>
 <p>Go into the JUCE folder you just moved. Launch the "Projucer", which is located in there.</p>
-<blockquote>
-<p>Note: You need to setup the path to JUCE and the JUCE modules. This should look something like this:
-<img alt="Global Paths screenshot" src="../images/global_paths_screenshot.png" /></p>
-</blockquote>
+<p><img alt="Screenshot of the Projucer application in a file explorer" src="../images/installation/Projucer_in_file_explorer.png" /></p>
+<p>Next, you should set the global paths for "Projucer". You can do this via the menu bar on the top left:
+<img alt="Global Paths screenshot" src="../images/installation/global_paths_screenshot.png" /></p>
 <h2 id="creating-an-application">Creating an Application</h2>
 <p>If you are launching "Projucer" for the first time, you are presented with the new project window. You also can access this window via <code>File&gt;New Project</code>.</p>
 <p><em>Projucer - New Project Window</em>
-<img alt="New Project screenshot" src="../images/new_project_screenshot.png" /></p>
+<img alt="New Project screenshot" src="../images/installation/new_project_screenshot.png" /></p>
 <h3 id="select-your-project-type">Select your project type</h3>
 <p>On the left-hand side of "Projucer", you can select a project type. This will add all the dependencies to create the programm selected and create code, to make the application run.</p>
 <p>You can select from the following types:</p>
@@ -208,19 +208,19 @@
 </table>
 <blockquote>
 <p>Note: If you use <strong>Visual Studio</strong> create a <strong>audio plugin</strong> and don't want to manually copy the plugin after every build, I suggest you to enable the "Plugin Copy Step":
-<img alt="Plugin Copy Step Screenshot" src="../images/plugin_copy_step_screenshot.png" /></p>
+<img alt="Plugin Copy Step Screenshot" src="../images/installation/plugin_copy_step_screenshot.png" /></p>
 </blockquote>
 <h2 id="export-the-project-and-open-in-ide">Export the project and open in IDE</h2>
 <p>After you created your project and set everything up, you can launch your IDE withing Projucer:
-<img alt="Export in IDE screenshot" src="../images/export_in_ide_screenshot.png" /></p>
+<img alt="Export in IDE screenshot" src="../images/installation/export_in_ide_screenshot.png" /></p>
 <h2 id="open-existing-projects">Open existing projects</h2>
 <p>To open existing Projucer project's, you can either double-click the <code>.jucer</code> file in your project or click on "File&gt;Open..." in Projucer.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../../what_is_juce/what_is_juce/" class="btn btn-neutral float-left" title="What is JUCE?"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../../creating_an_audio_plugin/creating_an_audio_plugin/" class="btn btn-neutral float-right" title="Creating an audio plugin">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../what_is_juce/" class="btn btn-neutral float-left" title="What is JUCE?"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../creating_an_audio_plugin/" class="btn btn-neutral float-right" title="Creating an audio plugin">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -243,18 +243,18 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../../what_is_juce/what_is_juce/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../what_is_juce/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../../creating_an_audio_plugin/creating_an_audio_plugin/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../creating_an_audio_plugin/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
-    <script src="../../../js/jquery-3.6.0.min.js"></script>
-    <script>var base_url = "../../..";</script>
-    <script src="../../../js/theme_extra.js"></script>
-    <script src="../../../js/theme.js"></script>
-      <script src="../../../search/main.js"></script>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
     <script>
         jQuery(function () {
             SphinxRtdTheme.Navigation.enable(true);

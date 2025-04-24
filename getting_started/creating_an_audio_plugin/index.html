@@ -4,21 +4,21 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
     <title>Creating an audio plugin - lemonjuce</title>
-    <link rel="stylesheet" href="../../../css/theme.css" />
-    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
         var mkdocs_page_name = "Creating an audio plugin";
-        var mkdocs_page_input_path = "getting_started/creating_an_audio_plugin/creating_an_audio_plugin.md";
+        var mkdocs_page_input_path = "getting_started/creating_an_audio_plugin.md";
         var mkdocs_page_url = null;
       </script>
     
     <!--[if lt IE 9]>
-      <script src="../../../js/html5shiv.min.js"></script>
+      <script src="../../js/html5shiv.min.js"></script>
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
       <script>hljs.highlightAll();</script> 
@@ -30,9 +30,9 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../../.." class="icon icon-home"> lemonjuce
+          <a href="../.." class="icon icon-home"> lemonjuce
         </a><div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
   </form>
 </div>
@@ -40,14 +40,14 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Getting Started</span></p>
               <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../../what_is_juce/what_is_juce/">What is JUCE?</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../what_is_juce/">What is JUCE?</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../installation/installation/">Installation</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Creating an audio plugin</a>
     <ul class="current">
@@ -59,12 +59,12 @@
     </li>
     </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../plugin_architecture/plugin_architecture/">Plugin architecture</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../plugin_architecture/">Plugin architecture</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Advanced</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../advanced/implementing_an_audioprocessorvaluetreestate/implementing_an_audioprocessorvaluetreestate/">Implementing an AudioProcessorValueTreeState</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../advanced/implementing_an_apvts/">Implementing an APVTS</a>
                   </li>
               </ul>
       </div>
@@ -74,13 +74,13 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../..">lemonjuce</a>
+          <a href="../..">lemonjuce</a>
         
       </nav>
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Getting Started</li>
       <li class="breadcrumb-item active">Creating an audio plugin</li>
     <li class="wy-breadcrumbs-aside">
@@ -93,9 +93,9 @@
               
                 <h1 id="creating-an-audio-plugin">Creating an audio plugin</h1>
 <h2 id="create-the-project">Create the project</h2>
-<p>To create an audio plug-in with JUCE, open "Projucer" and select "Plug-In&gt;Basic". See <a href="/getting_started/installation/installation/#creating-an-application">Creating an Application</a> if you don't know how to do that. In this tutorial we're going to name this plugin <code>SimpleAudioPlugin</code>.</p>
+<p>To create an audio plug-in with JUCE, open "Projucer" and select "Plug-In&gt;Basic". See <a href="/getting_started/installation/#creating-an-application">Creating an Application</a> if you don't know how to do that. In this tutorial we're going to name this plugin <code>SimpleAudioPlugin</code>.</p>
 <p>In this tutorial, we are going to create a VST3 plug-in, so make sure, that the <strong>VST3 setting</strong> is ticked in the Plugin Formats field in the <em>project configuration</em> settings:</p>
-<p><img alt="project configuration screenshot" src="../images/project_configuration_screenshot.png" />
+<p><img alt="project configuration screenshot" src="../images/creating_an_audio_plugin/project_configuration_screenshot.png" />
 <em>Project configuration</em></p>
 <p>In the <em>project configuration</em> you can change and tweak much more settings. Here you can change for example the project version, the plug-in type (generator or effect), change the plug-in category (ex. distortion or delay) and much more. However we dont need to change anything besides the "plugin format".</p>
 <p>Next click the "<strong>Save and Open in IDE</strong>"-button and <strong>build it</strong>.</p>
@@ -125,11 +125,11 @@
 </blockquote>
 <p>You can can change the location of the "AudioPluginHost" to your likings.</p>
 <p>If you run the "AudioPluginHost", you should see the graphical node editor that looks like this:</p>
-<p><img alt="graphical node_editor screenshot" src="../images/graphical_node_editor_screenshot.png" /></p>
+<p><img alt="graphical node_editor screenshot" src="../images/creating_an_audio_plugin/graphical_node_editor_screenshot.png" /></p>
 <p>You can search for plugins by going to <strong>Options&gt;Edit the List of Available Plug-ins...</strong>. Click <strong>Options...&gt;Scan for new or updated VST3 plug-ins</strong> to see the folders, that should be scanned by the "AudioPluginHost". Here you can select the folders, that are going to be scanned for new VST3 plug-ins. Here you can add or remove custom directories:</p>
-<p><img alt="folders to be scanned screenshot" src="../images/folders_to_be_scanned_screenshot.png" /></p>
+<p><img alt="folders to be scanned screenshot" src="../images/creating_an_audio_plugin/folders_to_be_scanned_screenshot.png" /></p>
 <p>Once the scan is complete go back to the node editor and right click, then select your plug-in from the context menu (it will be under a company called "yourcompany" by default. You can edit this in the "Projucer"). Connect the nodes up such that the Audio is routed to and from the "SimpleAudioPlugin":</p>
-<p><img alt="routings screenshot" src="../images/routings_screenshot.png" /></p>
+<p><img alt="routings screenshot" src="../images/creating_an_audio_plugin/routings_screenshot.png" /></p>
 <p>If you now <strong>double click</strong> onto the plugin node, you open the GUI of the plugin. The default does nothing but show <em>Hello world</em>.</p>
 <h2 id="automatically-run-audiopluginhost">Automatically run AudioPluginHost</h2>
 <p>If you want to run "AudioPluginHost" automatically when building your project, you can do that via the IDE. </p>
@@ -139,8 +139,8 @@
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../../installation/installation/" class="btn btn-neutral float-left" title="Installation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../../plugin_architecture/plugin_architecture/" class="btn btn-neutral float-right" title="Plugin architecture">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../installation/" class="btn btn-neutral float-left" title="Installation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../plugin_architecture/" class="btn btn-neutral float-right" title="Plugin architecture">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -163,18 +163,18 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../../installation/installation/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../installation/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../../plugin_architecture/plugin_architecture/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../plugin_architecture/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
-    <script src="../../../js/jquery-3.6.0.min.js"></script>
-    <script>var base_url = "../../..";</script>
-    <script src="../../../js/theme_extra.js"></script>
-    <script src="../../../js/theme.js"></script>
-      <script src="../../../search/main.js"></script>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
     <script>
         jQuery(function () {
             SphinxRtdTheme.Navigation.enable(true);
