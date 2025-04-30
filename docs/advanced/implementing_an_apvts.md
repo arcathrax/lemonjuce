@@ -84,11 +84,11 @@ private:
 };
 ```
 
-Next, we add the slider to the GUI. Here we will need to add several things in several funcitons.
+Next, we add the slider to the GUI. Here we will need to add several things in several functions.
 
 In the constructor, add and make the slider visible:
 
-**file**: `PluginEditor.h`
+**file**: `PluginEditor.cpp`
 ```cpp
 AudioProcessorEditor::AudioProcessorEditor (AudioProcessor& p) // Rename AudioProcessorEditor with your AudioProcessorEditor name
     : AudioProcessorEditor (&p), audioProcessor (p)
