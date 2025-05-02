@@ -183,9 +183,9 @@
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (APVTSTestingAudioProcessorEditor)
 };
 </code></pre>
-<p>Next, we add the slider to the GUI. Here we will need to add several things in several funcitons.</p>
+<p>Next, we add the slider to the GUI. Here we will need to add several things in several functions.</p>
 <p>In the constructor, add and make the slider visible:</p>
-<p><strong>file</strong>: <code>PluginEditor.h</code></p>
+<p><strong>file</strong>: <code>PluginEditor.cpp</code></p>
 <pre><code class="language-cpp">AudioProcessorEditor::AudioProcessorEditor (AudioProcessor&amp; p) // Rename AudioProcessorEditor with your AudioProcessorEditor name
     : AudioProcessorEditor (&amp;p), audioProcessor (p)
 {
