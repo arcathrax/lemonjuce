@@ -7,42 +7,39 @@ One thing I’ve found frustrating with the official JUCE tutorials is that they
 The files are ordered in a way, that you, as a reader, should be able to make sence of it. However JUCE is a big framework and this documentation can not hold the information and implementation of any JUCE class.
 
 ## ToDo
-- Beginner
-  - [x] `What is JUCE?`
-  - [x] `Installation`
-  - [x] `Creating an audio plugin`
-  - [x] `Plugin architecture`
-  - [ ] `The PluginEditor`
-  - [ ] `Creating a custom component`
-  - [ ] `Drawing images on to a screen`
-  - [ ] `The PluginProcessor`
-  - [ ] `Adding a waveshaper`
-- Intermediate
-  - `General JUCE`
-    - [ ] `Creating a custom module`
-  - `Parameter Handling`
-    - [x] `Implementing an apvts`
-    - [ ] `Create a own parameter class`
-  - `DSP`
-    - [ ] `Implementing a ProcessorChain`
-    - [ ] `Implementing a AudioProcessorGraph`
-    - [ ] `Implementing a IIR Filter`
-    - [ ] `Creating a custom processor`
-  - `GUI`
-    - [x] `Creating a Custom Look and Feel`
-    - [ ] `Creating a volume meter`
-- Advanced
-  - [ ] `Creating a openGL component`
-- General information
-  - [ ] `Releasing a JUCE plugin`
-    - [ ] `Debug vs Release`
-    - [ ] `Build a universal binary on MacOS`
-    - [ ] `Choosing the right license`
-    - [ ] `Setting up Code Signing`
-    - [ ] `Package your app or plugin for distribution`
-  - [ ] `Other ressources`
-  - [x] `Contributing page`
+- Getting Started
+  - [x] What is JUCE?
+  - [x] Installation
+  - [x] Creating an audio plugin
+  - [x] Plugin architecture
+- The Basics
+  - [ ] The PluginEditor
+  - [ ] The PluginProcessor
+- GUI
+  - [ ] Creating a GUI-Component
+  - [ ] Drawing images on to the screen
+  - [x] Creating a custom LookAndFeel
+  - [ ] Creating an OpenGL-Component
+- Parameter Handling
+  - [ ] The concept of parameters
+  - [x] Implementing an APVTS
+  - [ ] Creating a own parameter class
+- DSP
+  - [ ] Implementing a ProcessorChain
+  - [ ] Implementing a AudioProcessorGraph
+  - [ ] Implementing a IIR Filter
+  - [ ] Creating a custom processor
+- Misc
+  - [ ] Releasing a JUCE plugin
+    - [ ] Debug vs Release
+    - [ ] Build a universal binary on MacOS
+    - [ ] Choosing the right license
+    - [ ] Setting up code signing
+    - [ ] Package your app or plugin for distribution
 
+- Information
+  - [ ] Other ressources
+  - [x] Contributing page
 
 ## Start your own docs server
 ### Installing the dependencies
