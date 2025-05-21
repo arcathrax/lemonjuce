@@ -54,7 +54,7 @@ pip install mkdocs
 
 And lastly, you should clone this repository and start the mkdocs server:
 
-MacOS:
+MacOS/Linux:
 ```bash
 git clone https://github.com/arcathrax/lemonjuce.git
 cd lemonjuce
