@@ -1,4 +1,4 @@
-# Implementing an AudioProcessorValueTreeState
+# Implementing an APVTS
 ## What's an APVTS?
 An APVTS (AudioProcessorValueTreeState) is a core class in JUCE that provides a powerful and flexible way to **manage parameters** for audio plugins. It acts as a central repository for all the plugin’s adjustable parameters (knobs, sliders, switches, etc.).
 
