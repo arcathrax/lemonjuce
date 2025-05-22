@@ -11,6 +11,8 @@ nav:
     - Creating a custom LookAndFeel: gui/creating_a_custom_lookandfeel.md
   - Parameter Handling:
     - Implementing an APVTS: parameter_handling/implementing_an_apvts.md
+  - DSP:
+    - Implementing an IIR Filter: dsp/implementing_an_iir_filter.md
   - Information:
     - Contributing page: information/contributing.md
 
