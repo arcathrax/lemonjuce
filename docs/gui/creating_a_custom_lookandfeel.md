@@ -12,7 +12,7 @@ Without a LookAndFeel, Juce would default to a basic, often unappealing, visual 
 
 First, the required files need to be created. This is done via the [Projucer](/getting_started/what_is_juce/#projucer) application.  The [Projucer](/getting_started/what_is_juce/#projucer) will generate the necessary header and source code files for your custom LookAndFeel class.
 
-![screenshot of where to find the option to create the new files](images/creating_a_custom_look_and_feel/create_new_files.png)
+![screenshot of where to find the option to create the new files](images/creating_a_custom_lookandfeel/create_new_files.png)
 
 ### The Header File
 

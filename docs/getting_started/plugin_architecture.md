@@ -1,5 +1,5 @@
 # Plugin architecture
-An audio plug-in, made with JUCE consists of several folders and files. However, the main stuff will happen within two files: The [PluginProcessor](/getting_started/plugin_architecture/plugin_architecture/#pluginprocessor) and the [PluginEditor](/getting_started/plugin_architecture/plugin_architecture/#plugineditor). The "PluginProcessor" will process the audio while the "PluginEditor" will handle the GUI. We will take a closer look later in this file.
+An audio plug-in, made with JUCE consists of several folders and files. However, the main stuff will happen within two files: The [PluginProcessor](/getting_started/plugin_architecture/#pluginprocessor) and the [PluginEditor](/getting_started/plugin_architecture/#plugineditor). The "PluginProcessor" will process the audio while the "PluginEditor" will handle the GUI. We will take a closer look later in this file.
 
 ## General structure
 Every audio plug-in, made with JUCE will have the following folders:
