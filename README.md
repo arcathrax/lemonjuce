@@ -28,6 +28,9 @@ The files are ordered in a way, that you, as a reader, should be able to make se
   - [ ] Implementing a ProcessorChain
   - [ ] Implementing a AudioProcessorGraph
   - [ ] Implementing a IIR Filter
+    - [x] Peak Filter
+    - [ ] HighpassHighOrderButtwerworthMethod
+    - [ ] LowpassHighOrderButtwerworthMethod
   - [ ] Creating a custom processor
 - Misc
   - [ ] Releasing a JUCE plugin
