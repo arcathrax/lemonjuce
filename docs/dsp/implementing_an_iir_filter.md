@@ -37,6 +37,8 @@ private:
   void updateFilter();
 ```
 
+In the next step, you need to define, what filter to use. In this tutorial you can currently choose from [Peak Filter](/dsp/implementing_an_iir_filter#peak-filter) and an [Low/Highcut Filter](/dsp/implementing_an_iir_filter#high-lowcut-filter).
+
 ### Peak Filter
 
 Now lets define the function. We first start of by reading any parameters from our [APVTS](/parameter_handling/implementing_an_apvts) and storing them in a temporary variable, so we can read them better. Please note, that you **need to have parameter's named `Peak Freq`, `Peak Quality` and `Peak Gain`** or else this wont work. Next, we will calculate the coefficients. Thankfully JUCE has a helper class, that can help us out. This is the `juce::dsp::IIR::Coefficients<float>` part. Here we also define, what type of filter we want. Lastly, we will replace the old coefficients with the new ones. Here we assume, that you have a stereo audio plugin with a `leftChain` and a `rightChain`.
@@ -53,12 +55,44 @@ void AudioProcessor::updateFilter()
   
   // calculating the coefficients
   auto coefficients = juce::dsp::IIR::Coefficients<float>::makePeakFilter(
-  peakFreq,
-  peakQuality,
-  juce::Decibels::decibelsToGain(peakGain)
+    peakFreq,
+    peakQuality,
+    juce::Decibels::decibelsToGain(peakGain)
   );
   
-  *leftchain.get<filterIndex>().coefficients = *coefficients;
+  // updating the coefficients
+  *leftChain.get<filterIndex>().coefficients = *coefficients;
+  *rightChain.get<filterIndex>().coefficients = *coefficients;
+}
+```
+
+
+### High-/Lowcut Filter
+
+Now lets define the function. We first start of by reading any parameters from our [APVTS](/parameter_handling/implementing_an_apvts) and storing them in a temporary variable, so we can read them better. Please note, that you **need to have a parameter named `Cut Freq`** or else this wont work. This is the `juce::dsp::FilterDesign<float>` part. The number `1` will define, what order, that we are going to use. `1` creates an -6db/octave slope, `2` a -18db/octave slope and so on. Here we also define, what type of filter we want. Please note, that we will calculate both low- and highcut filters in this tutorial, since they are almost the same. Lastly, we will replace the old coefficients with the new ones. Here we assume, that you have a stereo audio plugin with a `leftChain` and a `rightChain`. Also this will generate a lowcut filter, however you can change this, by just changing `*lowCutCoefficients` to `*highCutCoefficients`.
+
+**file:** `PluginProcessor.cpp`
+
+```c++
+void AudioProcessor::updateFilter() {
+  // storing the parameter
+  auto cutFreq = apvts.getRawParameterValue("Cut Freq")->load();
+  
+  // calculating the coefficients
+  auto lowCutCoefficients = juce::dsp::FilterDesign<float>::designIIRHighpassHighOrderButterworthMethod(
+    cutFreq,
+    getSampleRate(),
+    1
+  )
+  auto highCutCoefficients = juce::dsp::FilterDesign<float>::designIIRLowpassHighOrderButterworthMethod(
+    cutFreq,
+    getSampleRate(),
+    1
+  ) 
+  
+  // updating the coefficients
+  *leftChain.get<filterIndex>().coefficients = *lowCutCoefficients;
+  *rightChain.get<filterIndex>().coefficients = *lowCutCoefficients;
 }
 ```
 

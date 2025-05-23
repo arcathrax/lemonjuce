@@ -29,7 +29,7 @@ The files are ordered in a way, that you, as a reader, should be able to make se
   - [ ] Implementing a AudioProcessorGraph
   - [ ] Implementing a IIR Filter
     - [x] Peak Filter
-    - [ ] HighpassHighOrderButtwerworthMethod
+    - [x] HighpassHighOrderButtwerworthMethod
     - [ ] LowpassHighOrderButtwerworthMethod
   - [ ] Creating a custom processor
 - Misc
