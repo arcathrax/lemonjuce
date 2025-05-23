@@ -187,7 +187,7 @@
 }
 </code></pre>
 <h3 id="high-lowshelf-filter">High-/Lowshelf Filter</h3>
-<p>Now lets define the function. We first start of by reading any parameters from our <a href="/parameter_handling/implementing_an_apvts">APVTS</a> and storing them in a temporary variable, so we can read them better. Please note, that you <strong>need to have parameter's named <code>Shelf Freq</code>, <code>Shelf Quality</code> and <code>Shelf Gain</code></strong> or else this wont work. The quality parameter should be between 0.5 and 5, wile 0.5 creates a very gentle slope and 5 creates a very steap slope. Next, we will calculate the coefficients. Thankfully JUCE has a helper class, that can help us out. This is the <code>juce::dsp::IIR::Coefficients&lt;float&gt;</code> part. Here we also define, what type of filter we want. Lastly, we will replace the old coefficients with the new ones. Here we assume, that you have a stereo audio plugin with a <code>leftChain</code> and a <code>rightChain</code>.</p>
+<p>Now lets define the function. We first start of by reading any parameters from our <a href="/parameter_handling/implementing_an_apvts">APVTS</a> and storing them in a temporary variable, so we can read them better. Please note, that you <strong>need to have parameter's named <code>Shelf Freq</code>, <code>Shelf Quality</code> and <code>Shelf Gain</code></strong> or else this wont work. The quality parameter should be between 0.5 and 5, wile 0.5 creates a very gentle slope and 5 creates a very steap slope. Next, we will calculate the coefficients. Thankfully JUCE has a helper class, that can help us out. This is the <code>juce::dsp::IIR::Coefficients&lt;float&gt;</code> part. Here we also define, what type of filter we want. We will create both coefficients for a highshelf filter and a lowshelf filter. You should be able to simply swap between them by changing <code>*lowShelfCoefficients</code> with <code>*highShelfCoefficients</code>. Lastly, we will replace the old coefficients with the new ones. Here we assume, that you have a stereo audio plugin with a <code>leftChain</code> and a <code>rightChain</code>.</p>
 <pre><code class="language-c++">void AudioProcessor::updateFilter()
 {
   // storing the parameters
@@ -196,7 +196,13 @@
   auto shelfGain = apvts.getRawParameterValue(&quot;Shelf Gain&quot;)-&gt;load();
 
   // calculating the coefficients
-  auto coefficients = juce::dsp::IIR::Coefficients&lt;float&gt;::makeHighShelf(
+  auto lowShelfCoefficients = juce::dsp::IIR::Coefficients&lt;float&gt;::makeLowShelf(
+    getSamplerate(),
+    shelfFreq,
+    shelfQuality,
+    shelfGain
+  );
+  auto highShelfCoefficients = juce::dsp::IIR::Coefficients&lt;float&gt;::makeHighShelf(
     getSampleRate(),
     shelfFreq,
     shelfQuality,
@@ -204,8 +210,8 @@
   );
 
   // updating the coefficients
-  *leftChain.get&lt;airFilterIndex&gt;().coefficients = *coefficients;
-  *rightChain.get&lt;airFilterIndex&gt;().coefficients = *coefficients;
+  *leftChain.get&lt;airFilterIndex&gt;().coefficients = *lowShelfCoefficients;
+  *rightChain.get&lt;airFilterIndex&gt;().coefficients = *lowShelfCoefficients;
 }
 </code></pre>
 <h2 id="update-the-filter">Update the Filter</h2>
