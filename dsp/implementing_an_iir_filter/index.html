@@ -76,6 +76,8 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#high-lowcut-filter">High-/Lowcut Filter</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#high-lowshelf-filter">High-/Lowshelf Filter</a>
+    </li>
         </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#update-the-filter">Update the Filter</a>
@@ -136,9 +138,9 @@
 <pre><code class="language-c++">private:
   void updateFilter();
 </code></pre>
-<p>In the next step, you need to define, what filter to use. In this tutorial you can currently choose from <a href="/dsp/implementing_an_iir_filter#peak-filter">Peak Filter</a> and an <a href="/dsp/implementing_an_iir_filter#high-lowcut-filter">Low/Highcut Filter</a>.</p>
+<p>In the next step, you need to define, what filter to use. In this tutorial you can currently choose from <a href="/dsp/implementing_an_iir_filter#peak-filter">Peak Filter</a>, <a href="/dsp/implementing_an_iir_filter#high-lowshelf-filter">Low-/Highshelf Filter</a> and an <a href="/dsp/implementing_an_iir_filter#high-lowcut-filter">Low-/Highcut Filter</a>.</p>
 <h3 id="peak-filter">Peak Filter</h3>
-<p>Now lets define the function. We first start of by reading any parameters from our <a href="/parameter_handling/implementing_an_apvts">APVTS</a> and storing them in a temporary variable, so we can read them better. Please note, that you <strong>need to have parameter's named <code>Peak Freq</code>, <code>Peak Quality</code> and <code>Peak Gain</code></strong> or else this wont work. Next, we will calculate the coefficients. Thankfully JUCE has a helper class, that can help us out. This is the <code>juce::dsp::IIR::Coefficients&lt;float&gt;</code> part. Here we also define, what type of filter we want. Lastly, we will replace the old coefficients with the new ones. Here we assume, that you have a stereo audio plugin with a <code>leftChain</code> and a <code>rightChain</code>.</p>
+<p>Now lets define the function. We first start of by reading any parameters from our <a href="/parameter_handling/implementing_an_apvts">APVTS</a> and storing them in a temporary variable, so we can read them better. Please note, that you <strong>need to have parameter's named <code>Peak Freq</code>, <code>Peak Quality</code> and <code>Peak Gain</code></strong> or else this wont work. The quality parameter should be between 0.5 and 5, wile 0.5 creates a very gentle slope and 5 creates a very steap slope. Next, we will calculate the coefficients. Thankfully JUCE has a helper class, that can help us out. This is the <code>juce::dsp::IIR::Coefficients&lt;float&gt;</code> part. Here we also define, what type of filter we want. Lastly, we will replace the old coefficients with the new ones. Here we assume, that you have a stereo audio plugin with a <code>leftChain</code> and a <code>rightChain</code>.</p>
 <p><strong>file:</strong> <code>PluginProcessor.cpp</code></p>
 <pre><code class="language-c++">void AudioProcessor::updateFilter()
 {
@@ -162,7 +164,8 @@
 <h3 id="high-lowcut-filter">High-/Lowcut Filter</h3>
 <p>Now lets define the function. We first start of by reading any parameters from our <a href="/parameter_handling/implementing_an_apvts">APVTS</a> and storing them in a temporary variable, so we can read them better. Please note, that you <strong>need to have a parameter named <code>Cut Freq</code></strong> or else this wont work. This is the <code>juce::dsp::FilterDesign&lt;float&gt;</code> part. The number <code>1</code> will define, what order, that we are going to use. <code>1</code> creates an -6db/octave slope, <code>2</code> a -18db/octave slope and so on. Here we also define, what type of filter we want. Please note, that we will calculate both low- and highcut filters in this tutorial, since they are almost the same. Lastly, we will replace the old coefficients with the new ones. Here we assume, that you have a stereo audio plugin with a <code>leftChain</code> and a <code>rightChain</code>. Also this will generate a lowcut filter, however you can change this, by just changing <code>*lowCutCoefficients</code> to <code>*highCutCoefficients</code>.</p>
 <p><strong>file:</strong> <code>PluginProcessor.cpp</code></p>
-<pre><code class="language-c++">void AudioProcessor::updateFilter() {
+<pre><code class="language-c++">void AudioProcessor::updateFilter() 
+{
   // storing the parameter
   auto cutFreq = apvts.getRawParameterValue(&quot;Cut Freq&quot;)-&gt;load();
 
@@ -181,6 +184,28 @@
   // updating the coefficients
   *leftChain.get&lt;filterIndex&gt;().coefficients = *lowCutCoefficients;
   *rightChain.get&lt;filterIndex&gt;().coefficients = *lowCutCoefficients;
+}
+</code></pre>
+<h3 id="high-lowshelf-filter">High-/Lowshelf Filter</h3>
+<p>Now lets define the function. We first start of by reading any parameters from our <a href="/parameter_handling/implementing_an_apvts">APVTS</a> and storing them in a temporary variable, so we can read them better. Please note, that you <strong>need to have parameter's named <code>Shelf Freq</code>, <code>Shelf Quality</code> and <code>Shelf Gain</code></strong> or else this wont work. The quality parameter should be between 0.5 and 5, wile 0.5 creates a very gentle slope and 5 creates a very steap slope. Next, we will calculate the coefficients. Thankfully JUCE has a helper class, that can help us out. This is the <code>juce::dsp::IIR::Coefficients&lt;float&gt;</code> part. Here we also define, what type of filter we want. Lastly, we will replace the old coefficients with the new ones. Here we assume, that you have a stereo audio plugin with a <code>leftChain</code> and a <code>rightChain</code>.</p>
+<pre><code class="language-c++">void AudioProcessor::updateFilter()
+{
+  // storing the parameters
+  auto shelfFreq = apvts.getRawParameterValue(&quot;Shelf Freq&quot;)-&gt;load();
+  auto shelfQuality = apvts.getRawParameterValue(&quot;Shelf Quality&quot;)-&gt;load();
+  auto shelfGain = apvts.getRawParameterValue(&quot;Shelf Gain&quot;)-&gt;load();
+
+  // calculating the coefficients
+  auto coefficients = juce::dsp::IIR::Coefficients&lt;float&gt;::makeHighShelf(
+    getSampleRate(),
+    shelfFreq,
+    shelfQuality,
+    shelfGain
+  );
+
+  // updating the coefficients
+  *leftChain.get&lt;airFilterIndex&gt;().coefficients = *coefficients;
+  *rightChain.get&lt;airFilterIndex&gt;().coefficients = *coefficients;
 }
 </code></pre>
 <h2 id="update-the-filter">Update the Filter</h2>
