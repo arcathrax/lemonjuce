@@ -41,7 +41,7 @@ The files are ordered in a way, that you, as a reader, should be able to make se
     - [ ] Package your app or plugin for distribution
 
 - Information
-  - [ ] Other ressources
+  - [ ] Other resources
   - [x] Contributing page
 
 ## Start your own docs server
