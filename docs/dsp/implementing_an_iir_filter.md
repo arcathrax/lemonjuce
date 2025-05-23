@@ -99,7 +99,7 @@ void AudioProcessor::updateFilter()
 
 ### High-/Lowshelf Filter
 
-Now lets define the function. We first start of by reading any parameters from our [APVTS](/parameter_handling/implementing_an_apvts) and storing them in a temporary variable, so we can read them better. Please note, that you **need to have parameter's named `Shelf Freq`, `Shelf Quality` and `Shelf Gain`** or else this wont work. The quality parameter should be between 0.5 and 5, wile 0.5 creates a very gentle slope and 5 creates a very steap slope. Next, we will calculate the coefficients. Thankfully JUCE has a helper class, that can help us out. This is the `juce::dsp::IIR::Coefficients<float>` part. Here we also define, what type of filter we want. Lastly, we will replace the old coefficients with the new ones. Here we assume, that you have a stereo audio plugin with a `leftChain` and a `rightChain`.
+Now lets define the function. We first start of by reading any parameters from our [APVTS](/parameter_handling/implementing_an_apvts) and storing them in a temporary variable, so we can read them better. Please note, that you **need to have parameter's named `Shelf Freq`, `Shelf Quality` and `Shelf Gain`** or else this wont work. The quality parameter should be between 0.5 and 5, wile 0.5 creates a very gentle slope and 5 creates a very steap slope. Next, we will calculate the coefficients. Thankfully JUCE has a helper class, that can help us out. This is the `juce::dsp::IIR::Coefficients<float>` part. Here we also define, what type of filter we want. We will create both coefficients for a highshelf filter and a lowshelf filter. You should be able to simply swap between them by changing `*lowShelfCoefficients` with `*highShelfCoefficients`. Lastly, we will replace the old coefficients with the new ones. Here we assume, that you have a stereo audio plugin with a `leftChain` and a `rightChain`.
 
 ```c++
 void AudioProcessor::updateFilter()
@@ -110,7 +110,13 @@ void AudioProcessor::updateFilter()
   auto shelfGain = apvts.getRawParameterValue("Shelf Gain")->load();
   
   // calculating the coefficients
-  auto coefficients = juce::dsp::IIR::Coefficients<float>::makeHighShelf(
+  auto lowShelfCoefficients = juce::dsp::IIR::Coefficients<float>::makeLowShelf(
+    getSamplerate(),
+    shelfFreq,
+    shelfQuality,
+    shelfGain
+  );
+  auto highShelfCoefficients = juce::dsp::IIR::Coefficients<float>::makeHighShelf(
     getSampleRate(),
     shelfFreq,
     shelfQuality,
@@ -118,8 +124,8 @@ void AudioProcessor::updateFilter()
   );
 
   // updating the coefficients
-  *leftChain.get<airFilterIndex>().coefficients = *coefficients;
-  *rightChain.get<airFilterIndex>().coefficients = *coefficients;
+  *leftChain.get<airFilterIndex>().coefficients = *lowShelfCoefficients;
+  *rightChain.get<airFilterIndex>().coefficients = *lowShelfCoefficients;
 }
 ```
 
