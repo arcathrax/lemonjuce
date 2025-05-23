@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Creating a Custom Look and Feel - lemonjuce</title>
+    <title>Creating a custom LookAndFeel - lemonjuce</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Creating a Custom Look and Feel";
-        var mkdocs_page_input_path = "advanced/creating_a_custom_look_and_feel.md";
+        var mkdocs_page_name = "Creating a custom LookAndFeel";
+        var mkdocs_page_input_path = "gui/creating_a_custom_lookandfeel.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -54,42 +54,42 @@
                   <li class="toctree-l1"><a class="reference internal" href="../../getting_started/plugin_architecture/">Plugin architecture</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">Advanced</span></p>
+              <p class="caption"><span class="caption-text">GUI</span></p>
               <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" >Parameter handling</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../implementing_an_apvts/">Implementing an APVTS</a>
-                </li>
-    </ul>
-                  </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" >GUI</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Creating a custom LookAndFeel</a>
     <ul class="current">
-                <li class="toctree-l2 current"><a class="reference internal current" href="#">Creating a Custom Look and Feel</a>
-    <ul class="current">
-    <li class="toctree-l3"><a class="reference internal" href="#what-is-a-lookandfeel">What is a LookAndFeel?</a>
+    <li class="toctree-l2"><a class="reference internal" href="#what-is-a-lookandfeel">What is a LookAndFeel?</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#implementation">Implementation</a>
+    <li class="toctree-l2"><a class="reference internal" href="#implementation">Implementation</a>
         <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#creating-the-files">Creating the files</a>
+    <li class="toctree-l3"><a class="reference internal" href="#creating-the-files">Creating the files</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#the-header-file">The Header File</a>
+    <li class="toctree-l3"><a class="reference internal" href="#the-header-file">The Header File</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#the-source-file">The Source File</a>
+    <li class="toctree-l3"><a class="reference internal" href="#the-source-file">The Source File</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#using-your-custom-lookandfeel">Using Your Custom LookAndFeel</a>
+    <li class="toctree-l2"><a class="reference internal" href="#using-your-custom-lookandfeel">Using Your Custom LookAndFeel</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#further-customization-considerations">Further Customization &amp; Considerations</a>
+    <li class="toctree-l2"><a class="reference internal" href="#further-customization-considerations">Further Customization &amp; Considerations</a>
     </li>
-    </ul>
-                </li>
     </ul>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">General information</span></p>
+              <p class="caption"><span class="caption-text">Parameter Handling</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../general_information/contributing/">Contributing</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parameter_handling/implementing_an_apvts/">Implementing an APVTS</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">DSP</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../dsp/implementing_an_iir_filter/">Implementing an IIR Filter</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Information</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../information/contributing/">Contributing page</a>
                   </li>
               </ul>
       </div>
@@ -106,9 +106,8 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
-          <li class="breadcrumb-item">Advanced</li>
           <li class="breadcrumb-item">GUI</li>
-      <li class="breadcrumb-item active">Creating a Custom Look and Feel</li>
+      <li class="breadcrumb-item active">Creating a custom LookAndFeel</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -124,7 +123,7 @@
 <h2 id="implementation">Implementation</h2>
 <h3 id="creating-the-files">Creating the files</h3>
 <p>First, the required files need to be created. This is done via the <a href="/getting_started/what_is_juce/#projucer">Projucer</a> application.  The <a href="/getting_started/what_is_juce/#projucer">Projucer</a> will generate the necessary header and source code files for your custom LookAndFeel class.</p>
-<p><img alt="screenshot of where to find the option to create the new files" src="../images/creating_a_custom_look_and_feel/create_new_files.png" /></p>
+<p><img alt="screenshot of where to find the option to create the new files" src="../images/creating_a_custom_lookandfeel/create_new_files.png" /></p>
 <h3 id="the-header-file">The Header File</h3>
 <p>Since we don't want to create everything from scratch, we inherit from an existing JUCE <code>LookAndFeel</code> class.  The recommended base class is <code>juce::LookAndFeel_V4</code>, which represents the newest and most "up-to-date" LookAndFeel provided by the Juce framework. This provides a good foundation for customization while leveraging existing functionality.</p>
 <p>Make sure you include the JUCE header, as we need some JUCE classes. Next, we define the class.  We will override specific functions from <code>juce::LookAndFeel_V4</code> to customize its behavior.</p>
@@ -267,8 +266,8 @@ void MainComponent::resized()
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../implementing_an_apvts/" class="btn btn-neutral float-left" title="Implementing an APVTS"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../../general_information/contributing/" class="btn btn-neutral float-right" title="Contributing">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../getting_started/plugin_architecture/" class="btn btn-neutral float-left" title="Plugin architecture"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../parameter_handling/implementing_an_apvts/" class="btn btn-neutral float-right" title="Implementing an APVTS">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -291,10 +290,10 @@ void MainComponent::resized()
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../implementing_an_apvts/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../../getting_started/plugin_architecture/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../../general_information/contributing/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../../parameter_handling/implementing_an_apvts/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

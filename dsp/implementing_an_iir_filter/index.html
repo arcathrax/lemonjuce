@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Implementing an IIR Filter - lemonjuce</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Implementing an IIR Filter";
+        var mkdocs_page_input_path = "dsp/implementing_an_iir_filter.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> lemonjuce
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/what_is_juce/">What is JUCE?</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/installation/">Installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/creating_an_audio_plugin/">Creating an audio plugin</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/plugin_architecture/">Plugin architecture</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">GUI</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../gui/creating_a_custom_lookandfeel/">Creating a custom LookAndFeel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Parameter Handling</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parameter_handling/implementing_an_apvts/">Implementing an APVTS</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">DSP</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Implementing an IIR Filter</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#whats-an-iir-filter">What's an IIR Filter?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#implementation">Implementation</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#peak-filter">Peak Filter</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#high-lowcut-filter">High-/Lowcut Filter</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#update-the-filter">Update the Filter</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Information</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../information/contributing/">Contributing page</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">lemonjuce</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">DSP</li>
+      <li class="breadcrumb-item active">Implementing an IIR Filter</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="implementing-an-iir-filter">Implementing an IIR Filter</h1>
+<h2 id="whats-an-iir-filter">What's an IIR Filter?</h2>
+<p>An Infinite Impulse Response (IIR) filter is a type of digital or analog filter used in signal processing to modify signals by selectively attenuating or amplifying certain frequencies. Unlike finite impulse response (FIR) filters, which have a finite duration response to an impulse input, IIR filters theoretically continue their response indefinitely, hence the term "infinite impulse response".</p>
+<p>In JUCE it is generally used to create filters of various types, like a high-shelf filter, a low-cut filter and bandpass filter. Designing those filters can be very hard and sometimes even create an unstable output. Thankfully there is a JUCE helper class, that does this part for us.</p>
+<h2 id="implementation">Implementation</h2>
+<p>First off, you need to create the filter and add it to your <a href="/dsp/implementing_a_processorchain">ProcessorChain</a>:</p>
+<p><strong>file:</strong> <code>PluginProcessor.h</code></p>
+<pre><code class="language-c++">using ProcessorChain = juce::dsp::ProcessorChain
+&lt;
+  juce::dsp::IIR::Filter&lt;float&gt;
+&gt;;
+</code></pre>
+<p>Don't forget to update your enum, if you're using one.</p>
+<p><strong>file:</strong> <code>PluginProcessor.h</code></p>
+<pre><code class="language-c++">enum
+{
+  filterIndex
+};
+</code></pre>
+<p>Next create a function, that reads the parameters and adjusts the filter. This function should be called during the playback, so we can adjust the filters settings in real time. Lets call this function <code>updateFilter()</code>. Since we just want to change the settings and don't actually process any audio, we don't need any return type. Also we won't use this function outside of the PluginProcessor-class so we can create it in the private section:</p>
+<p><strong>file:</strong> <code>PluginProcessor.h</code></p>
+<pre><code class="language-c++">private:
+  void updateFilter();
+</code></pre>
+<p>In the next step, you need to define, what filter to use. In this tutorial you can currently choose from <a href="/dsp/implementing_an_iir_filter#peak-filter">Peak Filter</a> and an <a href="/dsp/implementing_an_iir_filter#high-lowcut-filter">Low/Highcut Filter</a>.</p>
+<h3 id="peak-filter">Peak Filter</h3>
+<p>Now lets define the function. We first start of by reading any parameters from our <a href="/parameter_handling/implementing_an_apvts">APVTS</a> and storing them in a temporary variable, so we can read them better. Please note, that you <strong>need to have parameter's named <code>Peak Freq</code>, <code>Peak Quality</code> and <code>Peak Gain</code></strong> or else this wont work. Next, we will calculate the coefficients. Thankfully JUCE has a helper class, that can help us out. This is the <code>juce::dsp::IIR::Coefficients&lt;float&gt;</code> part. Here we also define, what type of filter we want. Lastly, we will replace the old coefficients with the new ones. Here we assume, that you have a stereo audio plugin with a <code>leftChain</code> and a <code>rightChain</code>.</p>
+<p><strong>file:</strong> <code>PluginProcessor.cpp</code></p>
+<pre><code class="language-c++">void AudioProcessor::updateFilter()
+{
+  // storing the parameters
+  auto peakFreq = apvts.getRawParameterValue(&quot;Peak Freq&quot;)-&gt;load();
+  auto peakQuality = apvts.getRawParameterValue(&quot;Peak Quality&quot;)-&gt;load();
+  auto peakGain = apvts.getRawParameterValue(&quot;Peak Gain&quot;)-&gt;load();
+
+  // calculating the coefficients
+  auto coefficients = juce::dsp::IIR::Coefficients&lt;float&gt;::makePeakFilter(
+    peakFreq,
+    peakQuality,
+    juce::Decibels::decibelsToGain(peakGain)
+  );
+
+  // updating the coefficients
+  *leftChain.get&lt;filterIndex&gt;().coefficients = *coefficients;
+  *rightChain.get&lt;filterIndex&gt;().coefficients = *coefficients;
+}
+</code></pre>
+<h3 id="high-lowcut-filter">High-/Lowcut Filter</h3>
+<p>Now lets define the function. We first start of by reading any parameters from our <a href="/parameter_handling/implementing_an_apvts">APVTS</a> and storing them in a temporary variable, so we can read them better. Please note, that you <strong>need to have a parameter named <code>Cut Freq</code></strong> or else this wont work. This is the <code>juce::dsp::FilterDesign&lt;float&gt;</code> part. The number <code>1</code> will define, what order, that we are going to use. <code>1</code> creates an -6db/octave slope, <code>2</code> a -18db/octave slope and so on. Here we also define, what type of filter we want. Please note, that we will calculate both low- and highcut filters in this tutorial, since they are almost the same. Lastly, we will replace the old coefficients with the new ones. Here we assume, that you have a stereo audio plugin with a <code>leftChain</code> and a <code>rightChain</code>. Also this will generate a lowcut filter, however you can change this, by just changing <code>*lowCutCoefficients</code> to <code>*highCutCoefficients</code>.</p>
+<p><strong>file:</strong> <code>PluginProcessor.cpp</code></p>
+<pre><code class="language-c++">void AudioProcessor::updateFilter() {
+  // storing the parameter
+  auto cutFreq = apvts.getRawParameterValue(&quot;Cut Freq&quot;)-&gt;load();
+
+  // calculating the coefficients
+  auto lowCutCoefficients = juce::dsp::FilterDesign&lt;float&gt;::designIIRHighpassHighOrderButterworthMethod(
+    cutFreq,
+    getSampleRate(),
+    1
+  )
+  auto highCutCoefficients = juce::dsp::FilterDesign&lt;float&gt;::designIIRLowpassHighOrderButterworthMethod(
+    cutFreq,
+    getSampleRate(),
+    1
+  ) 
+
+  // updating the coefficients
+  *leftChain.get&lt;filterIndex&gt;().coefficients = *lowCutCoefficients;
+  *rightChain.get&lt;filterIndex&gt;().coefficients = *lowCutCoefficients;
+}
+</code></pre>
+<h2 id="update-the-filter">Update the Filter</h2>
+<p>Now we just need call this function every time, audio is being processed or prepared. This is done in the <code>prepareToPlay</code> and in the <code>processBlock</code>. We also should update the filters after we loaded the plugin's state.</p>
+<p><strong>file:</strong> <code>PluginProcessor.cpp</code></p>
+<pre><code class="language-c++">void AudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
+{
+  // existing code
+
+  updateFilter();
+}
+</code></pre>
+<pre><code class="language-c++">void AudioProcessor::processBlock (juce::AudioBuffer&lt;float&gt;&amp; buffer, juce::MidiBuffer&amp; midiMessages)
+{
+  // existing code
+
+  updateFilter();
+}
+</code></pre>
+<pre><code class="language-c++">void SimpleEQAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
+{
+    auto tree = juce::ValueTree::readFromData(data, sizeInBytes);
+    if (tree.isValid())
+    {
+        apvts.replaceState(tree);
+        updateFilters();
+    }
+}
+</code></pre>
+<p>Now your filter should work and usable.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../parameter_handling/implementing_an_apvts/" class="btn btn-neutral float-left" title="Implementing an APVTS"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../information/contributing/" class="btn btn-neutral float-right" title="Contributing page">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../parameter_handling/implementing_an_apvts/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../information/contributing/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

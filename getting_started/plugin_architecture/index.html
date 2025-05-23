@@ -62,24 +62,24 @@
     </ul>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">Advanced</span></p>
+              <p class="caption"><span class="caption-text">GUI</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" >Parameter handling</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../advanced/implementing_an_apvts/">Implementing an APVTS</a>
-                </li>
-    </ul>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" >GUI</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../advanced/creating_a_custom_look_and_feel/">Creating a Custom Look and Feel</a>
-                </li>
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../gui/creating_a_custom_lookandfeel/">Creating a custom LookAndFeel</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">General information</span></p>
+              <p class="caption"><span class="caption-text">Parameter Handling</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../general_information/contributing/">Contributing</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parameter_handling/implementing_an_apvts/">Implementing an APVTS</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">DSP</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../dsp/implementing_an_iir_filter/">Implementing an IIR Filter</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Information</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../information/contributing/">Contributing page</a>
                   </li>
               </ul>
       </div>
@@ -107,7 +107,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="plugin-architecture">Plugin architecture</h1>
-<p>An audio plug-in, made with JUCE consists of several folders and files. However, the main stuff will happen within two files: The <a href="/getting_started/plugin_architecture/plugin_architecture/#pluginprocessor">PluginProcessor</a> and the <a href="/getting_started/plugin_architecture/plugin_architecture/#plugineditor">PluginEditor</a>. The "PluginProcessor" will process the audio while the "PluginEditor" will handle the GUI. We will take a closer look later in this file.</p>
+<p>An audio plug-in, made with JUCE consists of several folders and files. However, the main stuff will happen within two files: The <a href="/getting_started/plugin_architecture/#pluginprocessor">PluginProcessor</a> and the <a href="/getting_started/plugin_architecture/#plugineditor">PluginEditor</a>. The "PluginProcessor" will process the audio while the "PluginEditor" will handle the GUI. We will take a closer look later in this file.</p>
 <h2 id="general-structure">General structure</h2>
 <p>Every audio plug-in, made with JUCE will have the following folders:</p>
 <pre><code>YourAudioPlugin
@@ -150,7 +150,7 @@
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../creating_an_audio_plugin/" class="btn btn-neutral float-left" title="Creating an audio plugin"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../../advanced/implementing_an_apvts/" class="btn btn-neutral float-right" title="Implementing an APVTS">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../gui/creating_a_custom_lookandfeel/" class="btn btn-neutral float-right" title="Creating a custom LookAndFeel">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -176,7 +176,7 @@
       <span><a href="../creating_an_audio_plugin/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../../advanced/implementing_an_apvts/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../../gui/creating_a_custom_lookandfeel/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
