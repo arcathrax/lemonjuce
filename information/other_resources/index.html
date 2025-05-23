@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>What is JUCE? - lemonjuce</title>
+    <title>Other resources - lemonjuce</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "What is JUCE?";
-        var mkdocs_page_input_path = "getting_started/what_is_juce.md";
+        var mkdocs_page_name = "Other resources";
+        var mkdocs_page_input_path = "information/other_resources.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -44,26 +44,14 @@
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Getting Started</span></p>
-              <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">What is JUCE?</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#features">Features</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#tools">Tools</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#projucer">Projucer</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#audiopluginhost">AudioPluginHost</a>
-    </li>
-        </ul>
-    </li>
-    </ul>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/what_is_juce/">What is JUCE?</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/installation/">Installation</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../creating_an_audio_plugin/">Creating an audio plugin</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/creating_an_audio_plugin/">Creating an audio plugin</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../plugin_architecture/">Plugin architecture</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/plugin_architecture/">Plugin architecture</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">GUI</span></p>
@@ -82,10 +70,12 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Information</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../information/contributing/">Contributing page</a>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../contributing/">Contributing page</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../information/other_resources/">Other resources</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Other resources</a>
+    <ul class="current">
+    </ul>
                   </li>
               </ul>
       </div>
@@ -102,8 +92,8 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
-          <li class="breadcrumb-item">Getting Started</li>
-      <li class="breadcrumb-item active">What is JUCE?</li>
+          <li class="breadcrumb-item">Information</li>
+      <li class="breadcrumb-item active">Other resources</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -112,24 +102,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="what-is-juce">What is JUCE?</h1>
-<p>JUCE is an open-source cross-platform C++ application framework, used for the development of desktop and mobile applications. JUCE is used in particular for its GUI and plug-ins libraries. It is dual licensed under the GPLv3 and a commercial license.</p>
-<p>The aim of JUCE is to allow software to be written such that the same source code will compile and run identically on Windows, macOS and Linux platforms. It supports various development environments and compilers.</p>
-<h2 id="features">Features</h2>
-<p>JUCE provides a range of functions, covering user-interface elements, graphics, audio, XML and JSON parsing, networking, cryptography, multi-threading, an integrated interpreter that mimics ECMAScript's syntax and various other commonly used features.</p>
-<p>A notable feature of JUCE when compared to other similar frameworks, like Qt or GTK, is its large set of audio functionality; this is because JUCE was originally developed as a framework for Tracktion, an audio sequencer, before being split off into a standalone product.</p>
-<p>JUCE comes with wrapper classes for building audio and browser plugins. When building an audio plugin, multiple plugin formats can be selected for build targets. Those include VST &amp; VST3, RTAS, AAX and Audio Units.</p>
-<h2 id="tools">Tools</h2>
-<h3 id="projucer">Projucer</h3>
-<p>The "Projucer" is an IDE tool for creating and managing JUCE projects. When the files and settings for a JUCE project have been specified, the Projucer automatically generates a collection of 3rd-party project files to allow the project to be compiled natively on each target platform. It can currently generate Xcode projects, Visual Studio Projects, Linux Makefiles, Android Ant builds and CodeBlocks projects.</p>
-<h3 id="audiopluginhost">AudioPluginHost</h3>
-<p>The "AudioPluginHost" is a standalone application included with JUCE that allows users to load, test, and route audio plugins in a flexible environment. Designed primarly for plugin development and testing, it supports both VST and AU plugin formats and provides a real-time visual interface for managing plugin chains. With its built-in graph editor, users can freely connect audio and MIDI paths between loaded plugins, making it an essential tool for quickly verifying plugin behaviour outside of a DAW.</p>
+                <h1 id="resources">Resources</h1>
+<p>This is a list of other resources besides this documentation, that you can use to learn the JUCE framework.</p>
+<ul>
+<li>DSP<ul>
+<li><a href="https://www.musicdsp.org/">Musicdsp.org</a> - A collection of algorithms, thoughts and snippets, gathered for the music dsp community.</li>
+<li><a href="https://www.youtube.com/matkatmusic">Matkat Music YouTube Channel</a> - Long and useful tutorials for the JUCE framework.</li>
+<li><a href="https://www.youtube.com/@akashmurthy">Akash Murthy YouTube Channel</a> - Videos about various dsp topics.</li>
+</ul>
+</li>
+</ul>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../.." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../installation/" class="btn btn-neutral float-right" title="Installation">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../contributing/" class="btn btn-neutral float-left" title="Contributing page"><span class="icon icon-circle-arrow-left"></span> Previous</a>
     </div>
 
   <hr/>
@@ -152,10 +139,8 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../.." style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../contributing/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
-    
-      <span><a href="../installation/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
