@@ -1,7 +1,5 @@
 # Contributing
 
-# Contributing to lemonjuce
-
 Welcome! Our goal is to provide clear, practical, and a self-contained documentation for JUCE development. Your contributions are vital to making that happen.
 
 ## Why Contribute?
