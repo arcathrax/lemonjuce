@@ -37,7 +37,7 @@ private:
   void updateFilter();
 ```
 
-In the next step, you need to define, what filter to use. In this tutorial you can currently choose from [Peak Filter](/dsp/implementing_an_iir_filter#peak-filter) and an [Low/Highcut Filter](/dsp/implementing_an_iir_filter#high-lowcut-filter).
+In the next step, you need to define, what filter to use. In this tutorial you can currently choose from [Peak Filter](/dsp/implementing_an_iir_filter#peak-filter), [Low-/Highshelf Filter](/dsp/implementing_an_iir_filter#high-lowshelf-filter) and an [Low-/Highcut Filter](/dsp/implementing_an_iir_filter#high-lowcut-filter).
 
 ### Peak Filter
 
@@ -74,7 +74,8 @@ Now lets define the function. We first start of by reading any parameters from o
 **file:** `PluginProcessor.cpp`
 
 ```c++
-void AudioProcessor::updateFilter() {
+void AudioProcessor::updateFilter() 
+{
   // storing the parameter
   auto cutFreq = apvts.getRawParameterValue("Cut Freq")->load();
   
@@ -95,6 +96,33 @@ void AudioProcessor::updateFilter() {
   *rightChain.get<filterIndex>().coefficients = *lowCutCoefficients;
 }
 ```
+
+### High-/Lowshelf Filter
+
+Now lets define the function. We first start of by reading any parameters from our [APVTS](/parameter_handling/implementing_an_apvts) and storing them in a temporary variable, so we can read them better. Please note, that you **need to have parameter's named `Shelf Freq`, `Shelf Quality` and `Shelf Gain`** or else this wont work. Next, we will calculate the coefficients. Thankfully JUCE has a helper class, that can help us out. This is the `juce::dsp::IIR::Coefficients<float>` part. Here we also define, what type of filter we want. Lastly, we will replace the old coefficients with the new ones. Here we assume, that you have a stereo audio plugin with a `leftChain` and a `rightChain`.
+
+```c++
+void AudioProcessor::updateFilter()
+{
+  // storing the parameters
+  auto shelfFreq = apvts.getRawParameterValue("Shelf Freq")->load();
+  auto shelfQuality = apvts.getRawParameterValue("Shelf Quality")->load();
+  auto shelfGain = apvts.getRawParameterValue("Shelf Gain")->load();
+  
+  // calculating the coefficients
+  auto coefficients = juce::dsp::IIR::Coefficients<float>::makeHighShelf(
+    getSampleRate(),
+    shelfFreq,
+    shelfQuality,
+    shelfGain
+  );
+
+  // updating the coefficients
+  *leftChain.get<airFilterIndex>().coefficients = *coefficients;
+  *rightChain.get<airFilterIndex>().coefficients = *coefficients;
+}
+```
+
 
 ## Update the Filter
 
