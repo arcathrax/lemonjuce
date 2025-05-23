@@ -15,6 +15,7 @@ nav:
     - Implementing an IIR Filter: dsp/implementing_an_iir_filter.md
   - Information:
     - Contributing page: information/contributing.md
+    - Other resources: information/other_resources.md
 
 theme:
   name: readthedocs
