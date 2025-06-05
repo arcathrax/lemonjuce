@@ -7,6 +7,7 @@ nav:
     - Installation: getting_started/installation.md
     - Creating an audio plugin: getting_started/creating_an_audio_plugin.md
     - Plugin architecture: getting_started/plugin_architecture.md
+    - Setup CMake with JUCE: getting_started/setup_cmake_with_juce.md
   - GUI:
     - Creating a custom LookAndFeel: gui/creating_a_custom_lookandfeel.md
   - Parameter Handling:
