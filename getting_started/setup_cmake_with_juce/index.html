@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Setup CMake with JUCE - lemonjuce</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Setup CMake with JUCE";
+        var mkdocs_page_input_path = "getting_started/setup_cmake_with_juce.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> lemonjuce
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../what_is_juce/">What is JUCE?</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../creating_an_audio_plugin/">Creating an audio plugin</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../plugin_architecture/">Plugin architecture</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Setup CMake with JUCE</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#installing-cmake">Installing CMake</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#windows">Windows</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#macos">MacOS</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#linux">Linux</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#using-cmake">Using CMake</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#test-application">Test application</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cmake-juce-project">CMake JUCE Project</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#setup-the-project">Setup the Project</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#build-the-project">Build the project</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">GUI</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../gui/creating_a_custom_lookandfeel/">Creating a custom LookAndFeel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Parameter Handling</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parameter_handling/implementing_an_apvts/">Implementing an APVTS</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">DSP</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../dsp/implementing_an_iir_filter/">Implementing an IIR Filter</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Information</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../information/contributing/">Contributing page</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../information/other_resources/">Other resources</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">lemonjuce</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Getting Started</li>
+      <li class="breadcrumb-item active">Setup CMake with JUCE</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="setup-cmake-with-juce">Setup CMake with JUCE</h1>
+<p>If you are already creating JUCE plugins for a while or you maybe want to be more flexible while using JUCE, you may came across <a href="https://cmake.org/">CMake</a>. You can imagine it like being a better Projucer, but also a bit more complicated. So if you are a beginner, you might want to learn Projucer before learning CMake.</p>
+<p>Another advantage of CMake is that you can integrate third party libraries very easy like the machine learning library <a href="https://docs.pytorch.org/docs/main/cpp_index.html">libtorch</a> which is needed for most ai-plugins.</p>
+<h2 id="installing-cmake">Installing CMake</h2>
+<h3 id="windows">Windows</h3>
+<p>To install CMake on Windows, go to the <a href="https://cmake.org/">homepage of CMake</a> and follow the instructions. After that you should be able to open Powershell and type <code>cmake</code>. There should be an output of how to use CMake.</p>
+<h3 id="macos">MacOS</h3>
+<p>On MacOS, CMake is very easy to install using the package manager <a href="https://brew.sh/">Homebrew</a>. Follow the instructions on the website to install Homebrew. After you installed homebrew, you can just run the following command in the Terminal app to install CMake:
+<code>brew install cmake</code></p>
+<h3 id="linux">Linux</h3>
+<p>If you are on linux, you should already be familiar with the concepts of package managers and there is probably a package for CMake. If not, you should be able to download a compiled version on the <a href="https://cmake.org/">website of CMake</a>. However in the following list there are the commands for various distributions:</p>
+<ul>
+<li>Debian/Ubuntu: <code>sudo apt install cmake</code></li>
+<li>Arch: <code>pacman -Syu cmake</code></li>
+</ul>
+<h2 id="using-cmake">Using CMake</h2>
+<h3 id="test-application">Test application</h3>
+<p>If everything done correctly, you now should have CMake and an IDE installed. If you are new to CMake it's good if you learn the basics. Lets create a simple test application for this.</p>
+<p>First create a new directory in a location of your choosing and name it <code>hello-world-cmake</code>. In there you need to create a file called <code>CMakeLists.txt</code>. Please be aware of the case of the letters. Write the following text into the file:</p>
+<pre><code>cmake_minimum_required(VERSION 4.0 FATAL_ERROR)
+project(hello-world-cmake)
+add_executable(hello-world-cmake src/main.cpp)
+</code></pre>
+<p>This will tell CMake, that a minimum version of 4.0 is required and else it throws a fatal error. Next it tells cmake, that we're creating a project called <em>hello-world-cmake</em> and lastly that we want to generate an executable from the file <em>src/main.cpp</em>.</p>
+<p>This file doesn't exist yet so lets create it. First you need to create a new folder called <code>src</code> and in there create a new file called <code>main.cpp</code>. In there we will write a simple hello world text:</p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+int main(){
+  std::cout &lt;&lt; &quot;Hello World&quot; &lt;&lt; std::endl;
+}
+</code></pre>
+<p>After that, we should be able to run <code>cmake -B build .</code> to generate the build files and store them in the <em>build</em> directory. Finally run <code>cmake --build build</code> to build the application.</p>
+<p>This will generate a new executable inside the <code>build</code> folder called <code>hello-world-cmake</code>. If you want to test it, go inside the build folder and run it with <code>./hello-world-cmake</code> this should now output the string <em>Hello World</em>.</p>
+<p>Another useful information: You can generate different forms of the build using the <code>--config</code> flag. Here you can choose <code>Debug</code> or <code>Release</code>. Debug will create a build without compiler optimisations, set debug flags and assertions asserted. Release will create a build with compiler optimisations on, without debug flags and the assertions are not asserted. An example is <code>cmake --build build --config Release</code></p>
+<p>If you want to, you now also can create a packageroject for your IDE based on your CMakeLists.txt. You list all available projects using <code>cmake -G</code>. To select one you need to run something like that:</p>
+<pre><code class="language-c++">cmake -G &quot;Visual Studio 17 2022&quot; -B build .
+</code></pre>
+<p>This should create a folder called <code>build</code> and in there should be your IDE project.</p>
+<h2 id="cmake-juce-project">CMake JUCE Project</h2>
+<h3 id="setup-the-project">Setup the Project</h3>
+<p>Now you should have installed CMake and can use it to build C++ projects. Also you should be able to use it to create project files for your desired IDE, if wanted. However you don't know yet how to use CMake to build a JUCE project.</p>
+<p>The first step is to setup a simple JUCE project and then create the <code>CMakeLists.txt</code>. Thankfully JUCE provides some CMake examples which can be found inside the <code>JUCE/examples/CMake</code> folder. You also can find them <a href="https://github.com/juce-framework/JUCE/tree/master/examples/CMake">on github</a>. In here you can find examples for various projects. Copy the folder for the application, that you want to create. In my case this is the <code>AudioPlugin</code> folder.</p>
+<p><strong>Copy this folder</strong> into a directory of your choice (probably your repositories folder). When you now try to build the application using CMake, it wont work just yet, because CMake doesn't know where JUCE is located. We can fix that by <strong>copying our JUCE folder into the project</strong>. In this case, we also have all the files, that are used to create the application in one directory and it will always work, even when JUCE removes some functions.</p>
+<p>Your project should now look like this:</p>
+<pre><code>AudioPlugin
+|-JUCE/
+|-CMakeLists.txt 
+|-PluginEditor.cpp
+|-PluginEditor.h
+|-PluginProcessor.cpp
+|-PluginProcessor.h
+</code></pre>
+<p>Next, we need to adjust the <code>CMakeLists.txt</code> to tell CMake where JUCE is located in the project. This can be done by <strong>uncommenting a line inside of the example CMakeLists.txt</strong>: <code># add_subdirectory(JUCE)</code> to <code>add_subdirectory(JUCE)</code>.</p>
+<p>Lastly we can rename the variables to our likings. For example we can change the project name, plugin name, plugin manufacturer code and the formats that our plugin will be exported to. In this tutorial, we wont do any of that because we don't really need to.</p>
+<h3 id="build-the-project">Build the project</h3>
+<p>We now can build our project using the CMake cli:</p>
+<p>Generate build files</p>
+<pre><code class="language-bash">cmake -B build .
+</code></pre>
+<p>Build the application</p>
+<pre><code class="language-bash">cmake --build build
+</code></pre>
+<p>The compiled application should now be located in <code>build/&lt;ProjectName&gt;_artefacts</code>.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../plugin_architecture/" class="btn btn-neutral float-left" title="Plugin architecture"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../gui/creating_a_custom_lookandfeel/" class="btn btn-neutral float-right" title="Creating a custom LookAndFeel">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../plugin_architecture/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../gui/creating_a_custom_lookandfeel/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
