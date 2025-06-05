@@ -23,7 +23,7 @@ If you are on linux, you should already be familiar with the concepts of package
 ### Test application
 If everything done correctly, you now should have CMake and an IDE installed. If you are new to CMake it's good if you learn the basics. Lets create a simple test application for this.
 
-First create a new directory in a location of your choosing and name it *hello-world-cmake*. In there you need to create a file called *CMakeLists.txt*. Please be aware of the case of the letters. Write the following text into the file:
+First create a new directory in a location of your choosing and name it `hello-world-cmake`. In there you need to create a file called `CMakeLists.txt`. Please be aware of the case of the letters. Write the following text into the file:
 
 ```
 cmake_minimum_required(VERSION 4.0 FATAL_ERROR)
@@ -33,7 +33,7 @@ add_executable(hello-world-cmake src/main.cpp)
 
 This will tell CMake, that a minimum version of 4.0 is required and else it throws a fatal error. Next it tells cmake, that we're creating a project called *hello-world-cmake* and lastly that we want to generate an executable from the file *src/main.cpp*.
 
-This file doesn't exist yet so lets create it. First you need to create a new folder called *src* and in there create a new file called *main.cpp*. In there we will write a simple hello world text:
+This file doesn't exist yet so lets create it. First you need to create a new folder called `src` and in there create a new file called `main.cpp`. In there we will write a simple hello world text:
 
 ```c++
 #include <iostream>
@@ -44,7 +44,7 @@ int main(){
 
 After that, we should be able to run `cmake -B build .` to generate the build files and store them in the *build* directory. Finally run `cmake --build build` to build the application.
 
-This will generate a new executable inside the *build* folder called *hello-world-cmake*. If you want to test it, go inside the build folder and run it with `./hello-world-cmake` this should now output the string *Hello World*.
+This will generate a new executable inside the `build` folder called `hello-world-cmake`. If you want to test it, go inside the build folder and run it with `./hello-world-cmake` this should now output the string *Hello World*.
 
 Another useful information: You can generate different forms of the build using the `--config` flag. Here you can choose `Debug` or `Release`. Debug will create a build without compiler optimisations, set debug flags and assertions asserted. Release will create a build with compiler optimisations on, without debug flags and the assertions are not asserted. An example is `cmake --build build --config Release`
 
@@ -53,4 +53,9 @@ If you want to, you now also can create a packageroject for your IDE based on yo
 cmake -G "Visual Studio 17 2022" -B build .
 ```
 
-This should create a folder called *build* and in there should be your IDE project.
+This should create a folder called `build` and in there should be your IDE project.
+
+## CMake JUCE Project
+Now you should have installed CMake and can use it to build C++ projects. Also you should be able to use it to create project files for your desired IDE, if wanted. However you don't know yet how to use CMake to build a JUCE project.
+
+The first step is to setup a simple JUCE project and then create the `CMakeLists.txt`. Thankfully JUCE provides some CMake examples which can be found inside the `JUCE/examples/CMake` folder (assuming, that you already downloaded JUCE).
