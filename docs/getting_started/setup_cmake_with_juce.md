@@ -56,6 +56,41 @@ cmake -G "Visual Studio 17 2022" -B build .
 This should create a folder called `build` and in there should be your IDE project.
 
 ## CMake JUCE Project
+### Setup the Project
 Now you should have installed CMake and can use it to build C++ projects. Also you should be able to use it to create project files for your desired IDE, if wanted. However you don't know yet how to use CMake to build a JUCE project.
 
-The first step is to setup a simple JUCE project and then create the `CMakeLists.txt`. Thankfully JUCE provides some CMake examples which can be found inside the `JUCE/examples/CMake` folder (assuming, that you already downloaded JUCE).
+The first step is to setup a simple JUCE project and then create the `CMakeLists.txt`. Thankfully JUCE provides some CMake examples which can be found inside the `JUCE/examples/CMake` folder. You also can find them [on github](https://github.com/juce-framework/JUCE/tree/master/examples/CMake). In here you can find examples for various projects. Copy the folder for the application, that you want to create. In my case this is the `AudioPlugin` folder.
+
+**Copy this folder** into a directory of your choice (probably your repositories folder). When you now try to build the application using CMake, it wont work just yet, because CMake doesn't know where JUCE is located. We can fix that by **copying our JUCE folder into the project**. In this case, we also have all the files, that are used to create the application in one directory and it will always work, even when JUCE removes some functions.
+
+Your project should now look like this:
+
+```
+AudioPlugin
+|-JUCE/
+|-CMakeLists.txt 
+|-PluginEditor.cpp
+|-PluginEditor.h
+|-PluginProcessor.cpp
+|-PluginProcessor.h
+```
+
+Next, we need to adjust the `CMakeLists.txt` to tell CMake where JUCE is located in the project. This can be done by **uncommenting a line inside of the example CMakeLists.txt**: `# add_subdirectory(JUCE)` to `add_subdirectory(JUCE)`.
+
+
+Lastly we can rename the variables to our likings. For example we can change the project name, plugin name, plugin manufacturer code and the formats that our plugin will be exported to. In this tutorial, we wont do any of that because we don't really need to.
+
+### Build the project
+We now can build our project using the CMake cli:
+
+Generate build files
+```bash
+cmake -B build .
+```
+
+Build the application
+```bash
+cmake --build build
+```
+
+The compiled application should now be located in `build/<ProjectName>_artefacts`.
