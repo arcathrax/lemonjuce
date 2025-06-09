@@ -94,3 +94,29 @@ cmake --build build
 ```
 
 The compiled application should now be located in `build/<ProjectName>_artefacts`.
+
+### Add new files to the project
+You often have multiple files outside of the default ones and trying to build them with the default CMakeLists.txt wont work. However they can be added pretty easily and you just need to add a few lines to the `CMakeLIsts.txt`:
+
+```CMakeLists
+target_sources(AudioPluginExample
+    PRIVATE
+        PluginEditor.cpp
+        PluginProcessor.cpp
+        <YourFileName>.cpp
+      )
+```
+
+### Add JUCE modules to the project
+If you want to add a new JUCE module, like for example the DSP module, you need to add those to the project like this:
+
+```CMakeLists
+target_link_libraries(AudioPluginExample
+    PRIVATE
+        juce::juce_audio_utils
+        juce::juce_dsp
+    PUBLIC
+        juce::juce_recommended_config_flags
+          juce::juce_recommended_lto_flags
+          juce::juce_recommended_warning_flags)
+```
