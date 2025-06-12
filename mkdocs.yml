@@ -13,6 +13,7 @@ nav:
   - Parameter Handling:
     - Implementing an APVTS: parameter_handling/implementing_an_apvts.md
   - DSP:
+    - Implementing a Dry Wet Mixer: dsp/implementing_a_dry_wet_mixer.md
     - Implementing an IIR Filter: dsp/implementing_an_iir_filter.md
   - Information:
     - Contributing page: information/contributing.md
