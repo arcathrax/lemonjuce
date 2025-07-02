@@ -19,6 +19,7 @@ The files are ordered in a way, that you, as a reader, should be able to make se
   - [ ] Creating a GUI-Component
   - [ ] Drawing images on to the screen
   - [x] Creating a custom LookAndFeel
+  - [ ] Changing fonts
   - [ ] Creating an OpenGL-Component
 - Parameter Handling
   - [ ] The concept of parameters
@@ -27,7 +28,8 @@ The files are ordered in a way, that you, as a reader, should be able to make se
 - DSP
   - [ ] Implementing a ProcessorChain
   - [ ] Implementing a AudioProcessorGraph
-  - [ ] Implementing a IIR Filter
+  - [ ] Implementing a Dry Wet Mixer
+  - [x] Implementing a IIR Filter
     - [x] Peak Filter
     - [x] High-/Lowcut Filter
     - [x] High-/Lowshelf Filter
@@ -41,7 +43,7 @@ The files are ordered in a way, that you, as a reader, should be able to make se
     - [ ] Package your app or plugin for distribution
 
 - Information
-  - [ ] Other resources
+  - [x] Other resources
   - [x] Contributing page
 
 ## Start your own docs server

@@ -9,6 +9,7 @@ nav:
     - Plugin architecture: getting_started/plugin_architecture.md
     - Setup CMake with JUCE: getting_started/setup_cmake_with_juce.md
   - GUI:
+    - Changing fonts: gui/changing_fonts.md
     - Creating a custom LookAndFeel: gui/creating_a_custom_lookandfeel.md
   - Parameter Handling:
     - Implementing an APVTS: parameter_handling/implementing_an_apvts.md
