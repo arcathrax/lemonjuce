@@ -19,7 +19,7 @@ The files are ordered in a way, that you, as a reader, should be able to make se
   - [ ] Creating a GUI-Component
   - [ ] Drawing images on to the screen
   - [x] Creating a custom LookAndFeel
-  - [ ] Changing fonts
+  - [x] Changing fonts
   - [ ] Creating an OpenGL-Component
 - Parameter Handling
   - [ ] The concept of parameters
